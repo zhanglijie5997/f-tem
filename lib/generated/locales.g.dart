@@ -14,6 +14,8 @@ class LocaleKeys {
   static const hello = 'hello';
   static const home = 'home';
   static const me = 'me';
+  static const market = 'market';
+  static const message = 'message';
 }
 
 class Locales {
@@ -21,10 +23,14 @@ class Locales {
     'hello': '你好',
     'home': '首页',
     'me': '我的',
+    'market': '市场',
+    'message': '消息',
   };
   static const en_US = {
     'hello': 'hello',
     'home': 'Home',
     'me': 'Me',
+    'market': 'Market',
+    'message': 'Message',
   };
 }

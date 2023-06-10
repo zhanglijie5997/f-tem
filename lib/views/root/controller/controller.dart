@@ -1,7 +1,9 @@
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/generated/locales.g.dart';
 import 'package:art_app/views/home/home.dart';
+import 'package:art_app/views/market/market.dart';
 import 'package:art_app/views/me/me.dart';
+import 'package:art_app/views/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,9 +36,9 @@ class BottomItemModel {
 class RootController extends GetxController {
   static RootController get to => Get.find<RootController>();
   final  list = [
-    BottomItemModel(img: Assets.assetsImagesHome, selectImg: Assets.assetsImagesHomeSelect, name: LocaleKeys.hello, child: const HomeView(), index: 0),
-    BottomItemModel(img: Assets.assetsImagesMarket, selectImg: Assets.assetsImagesMarketSelect, name: LocaleKeys.hello, child: const HomeView(), index: 1),
-    BottomItemModel(img: Assets.assetsImagesMessage, selectImg: Assets.assetsImagesMessageSelect, name: LocaleKeys.hello, child: const HomeView(), index: 2),
+    BottomItemModel(img: Assets.assetsImagesHome, selectImg: Assets.assetsImagesHomeSelect, name: LocaleKeys.home, child: const HomeView(), index: 0),
+    BottomItemModel(img: Assets.assetsImagesMarket, selectImg: Assets.assetsImagesMarketSelect, name: LocaleKeys.market, child: const MarketView(), index: 1),
+    BottomItemModel(img: Assets.assetsImagesMessage, selectImg: Assets.assetsImagesMessageSelect, name: LocaleKeys.message, child: const MessageView(), index: 2),
     BottomItemModel(img: Assets.assetsImagesMe, selectImg: Assets.assetsImagesMeSelect, name: LocaleKeys.me, child: const MeView(), index: 3),
   ].obs;
 

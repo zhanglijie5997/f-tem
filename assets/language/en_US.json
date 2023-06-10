@@ -1,5 +1,7 @@
 {
   "hello": "hello",
   "home": "Home",
-  "me": "Me"
+  "me": "Me",
+  "market": "Market",
+  "message": "Message"
 }

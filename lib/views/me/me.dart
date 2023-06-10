@@ -1,12 +1,22 @@
-import 'package:art_app/views/me/controller/controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class MeView extends GetView<MeController> {
+
+class MeView extends StatefulWidget {
   const MeView({super.key});
 
   @override
+  State<MeView> createState() => _MeViewState();
+}
+
+
+class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin{
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return const Placeholder();
   }
+  
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -1,5 +1,6 @@
 import 'package:art_app/router/router.dart';
 import 'package:art_app/router/router.observer.dart';
+import 'package:art_app/services/language/language.services.dart';
 import 'package:art_app/services/theme/theme.services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,7 +49,7 @@ class App extends StatelessWidget {
       initialRoute: RoutesName.root,
       unknownRoute: RoutePages.unknowPage,
       
-      locale: const Locale('zh', 'CN'),
+      locale: LanguageService.to.language,
       fallbackLocale: const Locale('en', 'US'),
       supportedLocales: const [
         Locale('en', 'US'), // English, no country code

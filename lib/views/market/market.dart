@@ -1,22 +1,24 @@
 import 'package:art_app/extension/extension.dart';
-import 'package:art_app/views/home/controller/controller.dart';
+import 'package:art_app/views/market/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 // import 'package:art_app/generated/locales.g.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+
+class MarketView extends StatefulWidget {
+  const MarketView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeView();
+  State<MarketView> createState() => _MarketViewState();
 }
 
 
 
-class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin{
-  final controller = HomeController.to;
+class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMixin{
+
+  final controller = MarketController.to;
 
   @override
   Widget build(BuildContext context) {

@@ -19,11 +19,13 @@ class LanguageService extends GetxService {
   @override
   void onInit() {
     final local = StorageUtils.language;
-    LogUtil.w(local);
+    LogUtil.w('local => $local');
     if (local.contains(',')) {
       final list = local.split(',');
       LogUtil.w(list);
       _language.value = Locale(list[0], list[1]);
+      Get.updateLocale(_language.value);
+
     }
     
     super.onInit();
