@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:art_app/app.dart';
+import 'package:art_app/db/db.tools.dart';
 import 'package:art_app/services/services.dart';
 import 'package:art_app/utils/storage/storage.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 void main() async {
   await StorageUtils.init();
   await AppServices.init();
+  await DBInits.init();
   if (Platform.isAndroid) {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
 

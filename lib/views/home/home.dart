@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
+import '../../components/custom_img/custom_img.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -74,12 +76,12 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin{
                         children: [
                           ClipRRect(
                               borderRadius: 22.radius,
-                              child: SizedBox(
+                              child: const SizedBox(
                                 width: 44,
                                 height: 44,
-                                child: Image.network(
-                                  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg",
-                                  fit: BoxFit.fill,
+                                child: CustomImage(
+                                  url: "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg",
+                                  size: Size(44, 44),
                                 ),
                               ))
                         ],

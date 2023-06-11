@@ -77,6 +77,7 @@ class WebviewView extends GetView<WebviewController> {
         body: Stack(
           children: [
             InAppWebView(
+              
               initialUrlRequest:
                   URLRequest(url: Uri.parse("https://www.theblockbeats.info/flash/149016")),
               initialOptions: controller.webViewOptions,
@@ -90,7 +91,7 @@ class WebviewView extends GetView<WebviewController> {
                     action: PermissionRequestResponseAction.GRANT);
               },
               onLoadStart: (c, uri) async {
-                print(await c.getTitle());
+                print(await c.getUrl());
                 controller.updateActive(false);
               },
               onLoadStop: (c, uri) async {

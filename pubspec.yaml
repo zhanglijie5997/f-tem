@@ -48,7 +48,12 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   flutter_inappwebview: ^5.7.2+3
   url_launcher: ^6.1.11
+  extended_image: ^8.0.2
+  floor: ^1.4.2
+  sqflite: ^2.2.8+4
 dev_dependencies:
+  floor_generator: ^1.4.2
+  build_runner: ^2.1.2
   flutter_test:
     sdk: flutter
 
