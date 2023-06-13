@@ -18,3 +18,5 @@ samples, guidance on mobile development, and a full API reference.
 # get generate locales assets/language
 
 # flutter packages pub run build_runner build
+
+# pod repo add master https://github.com/std-s/OUniMPSDK.git

@@ -1,3 +1,4 @@
+import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/views/market/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -5,6 +6,7 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:get/get.dart';
 
 
 class MessageView extends StatefulWidget {
@@ -124,8 +126,30 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
                 
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return Container(
-                  color: Colors.primaries[index % Colors.primaries.length],
+                return Column(
+                  children: [
+                    ConstrainedBox(
+                       constraints: const BoxConstraints(minHeight: 43, maxWidth: 300, ),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(10, 10, 20, 0),
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            centerSlice: Rect.fromLTRB(20, 20, 38, 38),
+                            image: AssetImage(Assets.assetsImagesChatBubule), fit: BoxFit.fill
+                          ),
+                        ),
+                    
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 200),
+                          child: SelectionArea(child:  Text(
+                            '1hello2233',
+                            style: context.textTheme.bodyMedium?.copyWith(
+                              fontSize: 22
+                            ),
+                          )),
+                      )),
+                    ),
+                  ],
                 );
               }, childCount: 1),
               viewportFraction: 1,

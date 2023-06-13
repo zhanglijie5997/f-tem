@@ -51,6 +51,15 @@ dependencies:
   extended_image: ^8.0.2
   floor: ^1.4.2
   sqflite: ^2.2.8+4
+  connectivity_plus: ^4.0.1
+  share_plus: ^7.0.2
+  permission_handler: ^10.3.0
+  uni_links: ^0.5.1
+  app_settings: ^4.2.0
+  # flutter_openim_unimp:
+  #   git:
+  #     url: https://github.com/hrxiang/flutter_openim_unimp.git
+  #     ref: main
 dev_dependencies:
   floor_generator: ^1.4.2
   build_runner: ^2.1.2

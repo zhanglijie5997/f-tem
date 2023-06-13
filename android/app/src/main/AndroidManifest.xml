@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.yunji.artapp">
     <application
         android:label="art_app"
         android:name="${applicationName}"
@@ -23,6 +23,31 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!-- Deep Links -->
+            <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
+
+              <!-- android:pathPrefix="/[NAME][/NAME...]"  -->
+              <data
+                android:scheme="art_app"
+                android:host="artapp" 
+                />
+            </intent-filter>
+
+            <!-- App Links -->
+            <intent-filter android:autoVerify="true">
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <!-- Accepts URIs that begin with https://YOUR_HOST -->
+              <data
+                android:scheme="https"
+                android:host="artapp" />
+            </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
@@ -30,4 +55,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <uses-permission android:name="android.permission.BLUETOOTH" />  
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> 
 </manifest>

@@ -1,3 +1,4 @@
+import 'package:art_app/components/custom_refresh/custom_refresh.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/views/home/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
 import '../../components/custom_img/custom_img.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -122,14 +124,14 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin{
               floating: true,
               pinned: true,
                 delegate:
-                    CustomSliverPersistentHeader(child: const Text('data'))),
+                    CustomSliverPersistentHeader(child: const Text('data').onTap(() {
+                      Share.share('百度一下  https://www.baidu.com', subject: '百度');
+                    }))),
             
                 
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return Container(
-                  color: Colors.primaries[index % Colors.primaries.length],
-                );
+                return CustomRefresh();
               }, childCount: 1),
               viewportFraction: 1,
             )

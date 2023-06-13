@@ -120,7 +120,7 @@ class _$HomeDao extends HomeDao {
 
   @override
   Future<List<HomeEntity>> getList() async {
-    return _queryAdapter.queryList('SELECT * FROM Person',
+    return _queryAdapter.queryList('SELECT * FROM HomeEntity',
         mapper: (Map<String, Object?> row) =>
             HomeEntity(id: row['id'] as int, name: row['name'] as String));
   }

@@ -3,7 +3,7 @@ import 'package:floor/floor.dart';
 
 @dao
 abstract class HomeDao {
-  @Query('SELECT * FROM Person')
+  @Query('SELECT * FROM HomeEntity')
   Future<List<HomeEntity>> getList();
 
   @insert
