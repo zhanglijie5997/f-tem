@@ -725,6 +725,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.3"
+  screenshot_callback:
+    dependency: "direct main"
+    description:
+      name: screenshot_callback
+      sha256: d737d5a68337034ba2c477ad62f0b5d3e5171c5fcad5b35ac8647701e1632a26
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.3"
   share_plus:
     dependency: "direct main"
     description:

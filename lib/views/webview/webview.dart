@@ -50,11 +50,18 @@ class WebviewView extends GetView<WebviewController> {
                                 itemCount: controller.options.length,
                                 itemBuilder: (c, i) {
                                   final e = controller.options[i];
-                                  return Column(
-                                    children: [
-                                      e.icon,
-                                      Text(e.name)
-                                    ],
+                                  return GestureDetector(
+                                    onTap: () {
+                                      print('object');
+                                      Get.back();
+                                      controller.optionsCallback(e);
+                                    },
+                                    child: Column(
+                                      children: [
+                                        e.icon,
+                                        Text(e.name)
+                                      ],
+                                    )
                                   );
                                 } 
                               ),

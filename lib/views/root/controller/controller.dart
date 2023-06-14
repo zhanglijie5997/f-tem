@@ -1,12 +1,12 @@
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/generated/locales.g.dart';
+import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/home/home.dart';
 import 'package:art_app/views/market/market.dart';
 import 'package:art_app/views/me/me.dart';
 import 'package:art_app/views/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 class BottomItemModel {
   late String img;
   late String name;
@@ -34,6 +34,8 @@ class BottomItemModel {
 }
 
 class RootController extends GetxController {
+
+
   static RootController get to => Get.find<RootController>();
   final  list = [
     BottomItemModel(img: Assets.assetsImagesHome, selectImg: Assets.assetsImagesHomeSelect, name: LocaleKeys.home, child: const HomeView(), index: 0),
@@ -41,6 +43,7 @@ class RootController extends GetxController {
     BottomItemModel(img: Assets.assetsImagesMessage, selectImg: Assets.assetsImagesMessageSelect, name: LocaleKeys.message, child: const MessageView(), index: 2),
     BottomItemModel(img: Assets.assetsImagesMe, selectImg: Assets.assetsImagesMeSelect, name: LocaleKeys.me, child: const MeView(), index: 3),
   ].obs;
+
 
   final _active = 0.obs;
   int get active => _active.value;
@@ -51,4 +54,19 @@ class RootController extends GetxController {
   }
 
   final PageController pageController = PageController();
+
+  screenShotListener() {
+    LogUtil.w('用户使用系统截屏');
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+    @override
+    void onClose() {
+      super.onClose();
+    }
+    
 }

@@ -33,5 +33,5 @@ void main() async {
     }
   }
   // ThemeServiceController.to.updateStatusBar();
-  runApp(const App());
+  runApp(App());
 }

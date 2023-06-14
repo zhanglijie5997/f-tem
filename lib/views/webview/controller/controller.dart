@@ -1,19 +1,25 @@
+import 'package:art_app/utils/log/log.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 
+
+enum OptionsEnum {
+  refresh, /// 刷新
+}
 final class OptionsModel {
 
   late int id;
   late String name;
   late Icon icon;
-
-  OptionsModel({required this.id,required this.name, required this.icon });
+  late OptionsEnum type;
+  OptionsModel({required this.id,required this.name, required this.icon, required this.type });
 
   OptionsModel.fromJson(Map<String, dynamic> json){
       id = json['id'];
       name = json['name'];
       icon = json['icon'];
+      type = json['type'];
   }
 
   Map<String, dynamic> toJson(){
@@ -21,6 +27,7 @@ final class OptionsModel {
     data['name'] = name;
     data['id'] = id;
     data['icon'] = icon;
+    data['type'] = type;
     return data;
   }
 }
@@ -43,7 +50,7 @@ class WebviewController extends GetxController {
       ));
 
   List<OptionsModel> get options => [
-    OptionsModel(icon: const Icon(Icons.refresh_rounded, size: 24,), id: 0, name: '刷新')
+    OptionsModel(icon: const Icon(Icons.refresh_rounded, size: 24,), id: 0, name: '刷新', type: OptionsEnum.refresh)
   ];
 
   final _progress = (10.0).obs;
@@ -65,6 +72,17 @@ class WebviewController extends GetxController {
 
   void updateActive(bool v) {
     _active.value = v;
+  }
+
+  void optionsCallback(OptionsModel v) {
+    LogUtil.i(v.type);
+    switch (v.type) {
+      case OptionsEnum.refresh:
+        webViewController?.reload();
+        break;
+      default:
+        break;
+    }
   }
 
   @override
