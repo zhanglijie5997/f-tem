@@ -1,5 +1,4 @@
 import 'package:art_app/db/db.dart';
-import 'package:art_app/db/home/entity/home.dart';
 import 'package:art_app/utils/log/log.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

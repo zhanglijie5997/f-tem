@@ -1,11 +1,13 @@
 #import "AppDelegate.h"
 #import "GeneratedPluginRegistrant.h"
 #import "DCUniMP.h"
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  
+    
   // Override point for customization after application launch.
     FlutterViewController *flutterViewController = [[FlutterViewController alloc] initWithProject:nil nibName:nil bundle:nil];
     id<FlutterBinaryMessenger> binaryMessenger = [flutterViewController binaryMessenger];
@@ -73,8 +75,7 @@
                   result(FlutterMethodNotImplemented);
               }
       }];
-    
-    
+   
     [GeneratedPluginRegistrant registerWithRegistry:self];
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }

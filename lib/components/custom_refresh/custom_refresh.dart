@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:art_app/extension/widget/widget.ext.dart';
+import 'package:art_app/hook/notify_hook/notify_hook.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
+// import 'package:art_app/hook/notify_hook/notify_hook.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -29,10 +33,10 @@ class _CustomRefreshState extends State<CustomRefresh> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-          setState(() {
-            _result = connectivityMap[result] ?? const SizedBox();
-          });
-        });
+      setState(() {
+        _result = connectivityMap[result] ?? const SizedBox();
+      });
+    });
   }
 
   @override
@@ -49,6 +53,25 @@ class _CustomRefreshState extends State<CustomRefresh> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: _result);
+    return Container(child: _result).onTap(() async {
+      // notifyHook.send();
+
+      bool isAllowed = await AwesomeNotifications().isNotificationAllowed();
+      // if (!isAllowed) isAllowed = await displayNotificationRationale();
+      if (!isAllowed) return;
+      // NotificationUtils.createMessagingNotification(channelKey: 'big_picture', chatName: '测试', groupKey: '11', message: '11', username: 'zlj',);
+      // NotificationUtils.showInboxNotification(555);
+      NotificationUtils.showLowVibrationNotification(1111);
+    //   await AwesomeNotifications().createNotification(
+    //   content: NotificationContent(
+    //     id: 1,
+    //     channelKey: 'notification',
+    //     title: 'test',
+    //     body: 'test',
+    //     actionType: ActionType.Default,
+    //     category: NotificationCategory.Call,
+    //   ),
+    // );
+    });
   }
 }

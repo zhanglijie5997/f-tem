@@ -1015,7 +1015,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/Core/Libs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunji.yanjie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunji.yanjie1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1043,7 +1043,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/Core/Libs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunji.yanjie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunji.yanjie1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

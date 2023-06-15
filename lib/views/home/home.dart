@@ -131,7 +131,7 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin{
                 
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return CustomRefresh();
+                return const CustomRefresh();
               }, childCount: 1),
               viewportFraction: 1,
             )

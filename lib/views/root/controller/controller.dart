@@ -7,6 +7,9 @@ import 'package:art_app/views/me/me.dart';
 import 'package:art_app/views/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+// import '../../../hook/notify_hook/notify_hook.dart';
+
 class BottomItemModel {
   late String img;
   late String name;
@@ -20,7 +23,12 @@ class BottomItemModel {
     index = json['index'];
     selectImg = json['selectImg'];
   }
-  BottomItemModel({required this.img, required this.name, required this.child, required this.index, required this.selectImg});
+  BottomItemModel(
+      {required this.img,
+      required this.name,
+      required this.child,
+      required this.index,
+      required this.selectImg});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -34,16 +42,33 @@ class BottomItemModel {
 }
 
 class RootController extends GetxController {
-
-
   static RootController get to => Get.find<RootController>();
-  final  list = [
-    BottomItemModel(img: Assets.assetsImagesHome, selectImg: Assets.assetsImagesHomeSelect, name: LocaleKeys.home, child: const HomeView(), index: 0),
-    BottomItemModel(img: Assets.assetsImagesMarket, selectImg: Assets.assetsImagesMarketSelect, name: LocaleKeys.market, child: const MarketView(), index: 1),
-    BottomItemModel(img: Assets.assetsImagesMessage, selectImg: Assets.assetsImagesMessageSelect, name: LocaleKeys.message, child: const MessageView(), index: 2),
-    BottomItemModel(img: Assets.assetsImagesMe, selectImg: Assets.assetsImagesMeSelect, name: LocaleKeys.me, child: const MeView(), index: 3),
+  final list = [
+    BottomItemModel(
+        img: Assets.assetsImagesHome,
+        selectImg: Assets.assetsImagesHomeSelect,
+        name: LocaleKeys.home,
+        child: const HomeView(),
+        index: 0),
+    BottomItemModel(
+        img: Assets.assetsImagesMarket,
+        selectImg: Assets.assetsImagesMarketSelect,
+        name: LocaleKeys.market,
+        child: const MarketView(),
+        index: 1),
+    BottomItemModel(
+        img: Assets.assetsImagesMessage,
+        selectImg: Assets.assetsImagesMessageSelect,
+        name: LocaleKeys.message,
+        child: const MessageView(),
+        index: 2),
+    BottomItemModel(
+        img: Assets.assetsImagesMe,
+        selectImg: Assets.assetsImagesMeSelect,
+        name: LocaleKeys.me,
+        child: const MeView(),
+        index: 3),
   ].obs;
-
 
   final _active = 0.obs;
   int get active => _active.value;
@@ -61,12 +86,12 @@ class RootController extends GetxController {
 
   @override
   void onInit() {
+    
     super.onInit();
   }
 
-    @override
-    void onClose() {
-      super.onClose();
-    }
-    
+  @override
+  void onClose() {
+    super.onClose();
+  }
 }

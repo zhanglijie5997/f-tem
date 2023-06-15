@@ -12,7 +12,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:screenshot_callback/screenshot_callback.dart';
 import 'dart:ui' as ui;
 import 'generated/locales.g.dart';
-
 class App extends StatelessWidget {
   App({super.key});
   final GlobalKey globalkey = GlobalKey();

@@ -86,7 +86,7 @@ class WebviewView extends GetView<WebviewController> {
             InAppWebView(
               
               initialUrlRequest:
-                  URLRequest(url: Uri.parse("https://www.theblockbeats.info/flash/149016")),
+                  URLRequest(url: Uri.parse("https://yanjie.art")),
               initialOptions: controller.webViewOptions,
               onWebViewCreated: (c) {
                 controller.webViewController = c;

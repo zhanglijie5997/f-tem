@@ -6,7 +6,7 @@ import 'theme/theme.services.dart';
 
 class AppServices {
   static init() async{
-    Get.lazyPut(() => GlobalServiceController());
+    Get.put(GlobalServiceController(), permanent: true);
     Get.put(ThemeService(), permanent: true);
     Get.put(LanguageService(), permanent: true);
   }

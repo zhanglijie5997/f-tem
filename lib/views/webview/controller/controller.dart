@@ -79,6 +79,7 @@ class WebviewController extends GetxController {
     switch (v.type) {
       case OptionsEnum.refresh:
         webViewController?.reload();
+        _progress.value = 10;
         break;
       default:
         break;
