@@ -4,6 +4,9 @@ PODS:
   - awesome_notifications (0.7.5-dev.3):
     - Flutter
     - IosAwnCore (= 0.7.5-dev.3)
+  - captcha_plugin_flutter (0.0.1):
+    - Flutter
+    - NTESVerifyCode (= 3.5.2)
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
@@ -17,10 +20,15 @@ PODS:
   - flutter_inappwebview/Core (0.0.1):
     - Flutter
     - OrderedSet (~> 5.0)
+  - flutter_qr_reader (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - image_picker_ios (0.0.1):
+    - Flutter
   - IosAwnCore (0.7.5-dev.3)
+  - NTESVerifyCode (3.5.2)
   - OrderedSet (5.0.0)
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -43,10 +51,13 @@ PODS:
 DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
+  - captcha_plugin_flutter (from `.symlinks/plugins/captcha_plugin_flutter/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
+  - flutter_qr_reader (from `.symlinks/plugins/flutter_qr_reader/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - screenshot_callback (from `.symlinks/plugins/screenshot_callback/ios`)
@@ -56,6 +67,8 @@ DEPENDENCIES:
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - NTESVerifyCode
   trunk:
     - FMDB
     - IosAwnCore
@@ -67,6 +80,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_settings/ios"
   awesome_notifications:
     :path: ".symlinks/plugins/awesome_notifications/ios"
+  captcha_plugin_flutter:
+    :path: ".symlinks/plugins/captcha_plugin_flutter/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
@@ -75,6 +90,10 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_inappwebview:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
+  flutter_qr_reader:
+    :path: ".symlinks/plugins/flutter_qr_reader/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
@@ -93,12 +112,16 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_settings: d103828c9f5d515c4df9ee754dabd443f7cedcf3
   awesome_notifications: 1b6393d6ce02878dc50d0ae87baf7bdbc9d802a2
+  captcha_plugin_flutter: a14a6d938ebf4e23abbfb9454ad45454810e94d7
   connectivity_plus: 07c49e96d7fc92bc9920617b83238c4d178b446a
   device_info_plus: 7545d84d8d1b896cb16a4ff98c19f07ec4b298ea
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
+  flutter_qr_reader: d930dde3b2cfe2b3d0bb7d66e5ff3e514300a5e5
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   IosAwnCore: edf31913fd18960ebcde7c05912dc860ca2b63b2
+  NTESVerifyCode: 4ed20652152c2b341d8b348d24da48ef5b4c5eef
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
   permission_handler_apple: 8f116445eff3c0e7c65ad60f5fef5490aa94b4e4
@@ -109,6 +132,6 @@ SPEC CHECKSUMS:
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
-PODFILE CHECKSUM: daaed537179db5b517bd2bd78135c81810381bca
+PODFILE CHECKSUM: 5fe17b1a2d9a5112cab7640c3e6845d1e938915d
 
 COCOAPODS: 1.11.3
