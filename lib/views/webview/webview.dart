@@ -14,6 +14,7 @@ class WebviewView extends GetView<WebviewController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 50,
           leading: const Icon(Icons.close).onTap(() {
             Get.back();
           }),
@@ -155,7 +156,8 @@ class WebviewView extends GetView<WebviewController> {
                 : const SizedBox()),
             Obx(
               () => AnimatedSize(
-                  duration: 300.milliseconds,
+                  duration: controller.duration.milliseconds,
+                  alignment: Alignment.centerLeft,
                   child: Container(
                     width: context.mediaQuery.size.width *
                         (controller.progress / 100),

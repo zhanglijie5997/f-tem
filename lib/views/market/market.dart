@@ -1,10 +1,12 @@
 import 'package:art_app/extension/extension.dart';
+import 'package:art_app/router/router.dart';
 import 'package:art_app/views/market/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 // import 'package:art_app/generated/locales.g.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:get/get.dart';
 
 
 class MarketView extends StatefulWidget {
@@ -129,7 +131,9 @@ class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMi
               delegate: SliverChildBuilderDelegate((context, index) {
                 return Container(
                   color: Colors.primaries[index % Colors.primaries.length],
-                );
+                ).onTap(() {
+                  Get.toNamed(RoutesName.login);
+                });
               }, childCount: 1),
               viewportFraction: 1,
             )

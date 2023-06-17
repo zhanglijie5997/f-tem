@@ -74,16 +74,28 @@ class WebviewController extends GetxController {
     _active.value = v;
   }
 
+
   void optionsCallback(OptionsModel v) {
     LogUtil.i(v.type);
     switch (v.type) {
       case OptionsEnum.refresh:
+        // updateDuration(0);
         webViewController?.reload();
         _progress.value = 10;
+        // Future.delayed(50.milliseconds, () {
+        //   updateDuration();
+        // });
         break;
       default:
         break;
     }
+  }
+
+  final _duration = 300.obs;
+  int get duration => _duration.value;
+
+  updateDuration([int v = 300]) {
+    _duration.value = v;
   }
 
   @override

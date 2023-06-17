@@ -9,6 +9,20 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../utils/log/log.utils.dart';
 
+class MyDecorator {
+  final String message;
+  const MyDecorator(this.message);
+}
+
+class Test {
+  @MyDecorator('Hello, world!')
+  void myFunction() {
+    
+  }
+}
+
+
+
 class HttpUtil {
   const HttpUtil._();
   static const String _tag = '🌐 HttpUtil';

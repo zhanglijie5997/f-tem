@@ -1,4 +1,7 @@
+import 'package:art_app/extension/widget/widget.ext.dart';
+import 'package:art_app/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class MeView extends StatefulWidget {
@@ -14,7 +17,11 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return const Placeholder();
+    return Scaffold(
+      body: const Placeholder().onTap(() {
+        Get.toNamed(RoutesName.scan);
+      }),
+    );
   }
   
   @override
