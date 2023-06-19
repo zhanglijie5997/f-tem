@@ -1,5 +1,7 @@
+import 'package:art_app/components/custom_preview_img/custom_preview_img.dart';
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
+import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/market/controller/controller.dart';
 import 'package:art_app/views/message/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -49,10 +51,7 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
                     itemBuilder: (context, index) {
                       return ClipRRect(
                           borderRadius: 6.radius,
-                          child: Image.network(
-                            "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg",
-                            fit: BoxFit.fill,
-                          ));
+                          child:  CustomPreviewImg(tag: 'tag$index', path:  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg"));
                     },
                     itemCount: 10,
                     itemWidth: double.infinity,
@@ -79,11 +78,8 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
                               child: SizedBox(
                                 width: 44,
                                 height: 44,
-                                child: Image.network(
-                                  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg",
-                                  fit: BoxFit.fill,
-                                ),
-                              ))
+                                child: CustomPreviewImg(tag: 'tag$i', path:  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg")),
+                              )
                         ],
                       ),
                     ),
