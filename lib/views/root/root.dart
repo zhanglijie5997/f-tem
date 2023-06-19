@@ -6,6 +6,8 @@ import 'package:art_app/views/root/controller/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../components/custom_badge/custom_badge.dart';
+
 class RootView extends GetView<RootController> {
   const RootView({super.key});
 
@@ -13,22 +15,21 @@ class RootView extends GetView<RootController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-          controller: controller.pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: controller.list.map((e) => e.child).toList(),
-        ),
-        floatingActionButton: IconButton(
-            onPressed: () {
-              // SmartDialog.showLoading(animationType: SmartAnimationType.centerFade_otherSlide, displayTime: 10000.milliseconds);
-              // ThemeServiceController.to.updateThemeMode(ThemeServiceController.to.themeModel == ThemeMode.dark ? ThemeMode.light :  ThemeMode.dark);
-              // LanguageService.to.updateLanguage(
-              //     LanguageService.to.language == const Locale('en', 'US')
-              //         ? const Locale('zh', 'CN')
-              //         : const Locale('en', 'US'));
-              Get.toNamed(RoutesName.webview);
-            },
-            icon: const Icon(Icons.change_circle)),
-      
+        controller: controller.pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: controller.list.map((e) => e.child).toList(),
+      ),
+      floatingActionButton: IconButton(
+          onPressed: () {
+            // SmartDialog.showLoading(animationType: SmartAnimationType.centerFade_otherSlide, displayTime: 10000.milliseconds);
+            // ThemeServiceController.to.updateThemeMode(ThemeServiceController.to.themeModel == ThemeMode.dark ? ThemeMode.light :  ThemeMode.dark);
+            // LanguageService.to.updateLanguage(
+            //     LanguageService.to.language == const Locale('en', 'US')
+            //         ? const Locale('zh', 'CN')
+            //         : const Locale('en', 'US'));
+            Get.toNamed(RoutesName.webview);
+          },
+          icon: const Icon(Icons.change_circle)),
       bottomNavigationBar: Obx(() => Container(
             color: context.customTheme?.bottomBar,
             padding: EdgeInsets.only(bottom: context.mediaQueryPadding.bottom),
@@ -39,18 +40,44 @@ class RootView extends GetView<RootController> {
                           padding: const EdgeInsets.only(top: 10),
                           height: 50,
                           alignment: Alignment.center,
-                          child: Column(
+                          child: Stack(
                             children: [
-                              SizedBox(
-                                width: 20, height: 20,
-                                child: Image.asset( controller.active == e.index ? e.selectImg : e.img)
+                              Column(
+                                children: [
+                                  SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: Image.asset(
+                                          controller.active == e.index
+                                              ? e.selectImg
+                                              : e.img)),
+                                  Text(e.name.tr,
+                                      style: context.textTheme.bodyMedium
+                                          ?.copyWith(
+                                              fontSize: 12,
+                                              color: controller.active ==
+                                                      e.index
+                                                  ? context.customTheme?.success
+                                                  : context.textTheme.bodyMedium
+                                                      ?.color)),
+                                ],
                               ),
-                              Text(e.name.tr,
-                                  style: context.textTheme.bodyMedium?.copyWith(
-                                      fontSize: 12,
-                                      color: controller.active == e.index
-                                          ? context.customTheme?.success
-                                          : context.textTheme.bodyMedium?.color)),
+                               Transform.translate(
+                                 offset: const Offset(10, 0),
+                                 child:  SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: (e.badge?? 0) > 0 ? QqBadge(
+                                    text: '${e.badge}',
+                                    radius: 6,
+                                    onClearBadge: controller.cleanBadge,
+                                    textStyle: const TextStyle(
+                                      fontSize: 8,
+                                      color: Color(0xFFFFFFFF),
+                                    ),
+                                  ) : const SizedBox(),
+                              ),
+                               )
                             ],
                           ),
                         ).onTap(() {
@@ -60,7 +87,6 @@ class RootView extends GetView<RootController> {
                   .toList(),
             ),
           )),
-     );
+    );
   }
 }
-

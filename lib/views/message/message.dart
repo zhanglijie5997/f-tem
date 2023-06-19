@@ -1,6 +1,7 @@
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/views/market/controller/controller.dart';
+import 'package:art_app/views/message/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 // import 'package:art_app/generated/locales.g.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class MessageView extends StatefulWidget {
 
 
 class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClientMixin{
-  final controller = MarketController.to;
+  final controller = MessageController.to;
   @override
   Widget build(BuildContext context) {
     super.build(context);

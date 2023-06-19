@@ -78,7 +78,9 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
 
   void _onCreateController(QrReaderViewController controller) async {
     _controller = controller;
-    _controller?.startCamera(_onQrBack);
+    Future.delayed(200.milliseconds, () {
+      _controller?.startCamera(_onQrBack);
+    });
   }
 
   bool isScan = false;

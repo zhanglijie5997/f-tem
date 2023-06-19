@@ -28,7 +28,7 @@ class LoginController extends GetxController {
         paddingBottom: 15);
 
     captchaPlugin.init({
-      "captcha_id": "",
+      "captcha_id": "054a29844f754634b32524e833e033e1",
       "is_debug": kDebugMode,
       "is_no_sense_mode": false,
       "dimAmount": 0.8,

@@ -7,6 +7,7 @@ import 'package:art_app/views/me/me.dart';
 import 'package:art_app/views/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:get_storage/get_storage.dart';
 
 // import '../../../hook/notify_hook/notify_hook.dart';
 
@@ -16,19 +17,24 @@ class BottomItemModel {
   late Widget child;
   late int index;
   late String selectImg;
+  late int? badge;
+
   BottomItemModel.fromJson(Map<String, dynamic> json) {
     img = json['img'];
     name = json['name'];
     child = json['child'];
     index = json['index'];
     selectImg = json['selectImg'];
+    badge = json['badge'];
   }
+
   BottomItemModel(
       {required this.img,
       required this.name,
       required this.child,
       required this.index,
-      required this.selectImg});
+      required this.selectImg,
+      this.badge});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -37,6 +43,7 @@ class BottomItemModel {
     data['child'] = child;
     data['index'] = index;
     data['selectImg'] = selectImg;
+    data['badge'] = badge;
     return data;
   }
 }
@@ -61,7 +68,8 @@ class RootController extends GetxController {
         selectImg: Assets.assetsImagesMessageSelect,
         name: LocaleKeys.message,
         child: const MessageView(),
-        index: 2),
+        index: 2,
+        badge: 3),
     BottomItemModel(
         img: Assets.assetsImagesMe,
         selectImg: Assets.assetsImagesMeSelect,
@@ -71,6 +79,7 @@ class RootController extends GetxController {
   ].obs;
 
   final _active = 0.obs;
+
   int get active => _active.value;
 
   updateActive(int v) {
@@ -84,9 +93,23 @@ class RootController extends GetxController {
     LogUtil.w('用户使用系统截屏');
   }
 
+  cleanBadge() {
+    LogUtil.w('清除badge');
+    list[2].badge = 0;
+    list.value = list
+        .map((e) => BottomItemModel(
+            img: e.img,
+            name: e.name,
+            child: e.child,
+            index: e.index,
+            selectImg: e.selectImg,
+            badge: 0))
+        .toList();
+    update();
+  }
+
   @override
   void onInit() {
-    
     super.onInit();
   }
 

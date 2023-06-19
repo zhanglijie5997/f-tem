@@ -14,7 +14,7 @@ class WebviewView extends GetView<WebviewController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 50,
+          toolbarHeight: 45,
           leading: const Icon(Icons.close).onTap(() {
             Get.back();
           }),

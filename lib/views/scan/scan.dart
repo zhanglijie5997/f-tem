@@ -12,7 +12,7 @@ class ScanView extends GetView<ScanController> {
     return Scaffold(
       // extendBody: true,
       appBar: AppBar(
-        toolbarHeight: 50,
+        toolbarHeight: 45,
         title: const Text(''),
         backgroundColor: Colors.black,
       ),

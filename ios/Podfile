@@ -1,6 +1,7 @@
 # Uncomment this line to define a global platform for your project
 platform :ios, '11.0'
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 ENV['SWIFT_VERSION'] = '5'
@@ -30,7 +31,7 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  # pod 'OUniMPSDK', '~> 3.6.18'
+  # pod 'OUniMPSDK', 
   target 'RunnerTests' do
     inherit! :search_paths
   end
