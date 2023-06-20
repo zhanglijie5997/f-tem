@@ -1,9 +1,19 @@
 class Assets {
   Assets._();
-  
+
+  /// Assets for assetsImagesAnnouncement
+  /// assets/images/announcement.png
+  static const String assetsImagesAnnouncement =
+      "assets/images/announcement.png";
+
   /// Assets for assetsImagesChatBubule
   /// assets/images/chat_bubule.png
   static const String assetsImagesChatBubule = "assets/images/chat_bubule.png";
+
+  /// Assets for assetsImagesCustomServices
+  /// assets/images/custom_services.png
+  static const String assetsImagesCustomServices =
+      "assets/images/custom_services.png";
 
   /// Assets for assetsImagesHome
   /// assets/images/home.png
@@ -19,7 +29,8 @@ class Assets {
 
   /// Assets for assetsImagesMarketSelect
   /// assets/images/market_select.png
-  static const String assetsImagesMarketSelect = "assets/images/market_select.png";
+  static const String assetsImagesMarketSelect =
+      "assets/images/market_select.png";
 
   /// Assets for assetsImagesMe
   /// assets/images/me.png
@@ -35,7 +46,28 @@ class Assets {
 
   /// Assets for assetsImagesMessageSelect
   /// assets/images/message_select.png
-  static const String assetsImagesMessageSelect = "assets/images/message_select.png";
+  static const String assetsImagesMessageSelect =
+      "assets/images/message_select.png";
+
+  /// Assets for assetsImagesMoney
+  /// assets/images/money.png
+  static const String assetsImagesMoney = "assets/images/money.png";
+
+  /// Assets for assetsImagesNewUser
+  /// assets/images/new_user.png
+  static const String assetsImagesNewUser = "assets/images/new_user.png";
+
+  /// Assets for assetsImagesShare
+  /// assets/images/share.png
+  static const String assetsImagesShare = "assets/images/share.png";
+
+  /// Assets for assetsImagesSynthesis
+  /// assets/images/synthesis.png
+  static const String assetsImagesSynthesis = "assets/images/synthesis.png";
+
+  /// Assets for assetsJsonTheme
+  /// assets/json/theme.json
+  static const String assetsJsonTheme = "assets/json/theme.json";
 
   /// Assets for assetsLanguageEnUS
   /// assets/language/en_US.json

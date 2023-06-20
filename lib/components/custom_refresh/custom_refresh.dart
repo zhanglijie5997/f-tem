@@ -62,16 +62,16 @@ class _CustomRefreshState extends State<CustomRefresh> {
       // NotificationUtils.createMessagingNotification(channelKey: 'big_picture', chatName: '测试', groupKey: '11', message: '11', username: 'zlj',);
       // NotificationUtils.showInboxNotification(555);
       NotificationUtils.showLowVibrationNotification(1111);
-    //   await AwesomeNotifications().createNotification(
-    //   content: NotificationContent(
-    //     id: 1,
-    //     channelKey: 'notification',
-    //     title: 'test',
-    //     body: 'test',
-    //     actionType: ActionType.Default,
-    //     category: NotificationCategory.Call,
-    //   ),
-    // );
+      //   await AwesomeNotifications().createNotification(
+      //   content: NotificationContent(
+      //     id: 1,
+      //     channelKey: 'notification',
+      //     title: 'test',
+      //     body: 'test',
+      //     actionType: ActionType.Default,
+      //     category: NotificationCategory.Call,
+      //   ),
+      // );
     });
   }
 }

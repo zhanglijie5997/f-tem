@@ -4,12 +4,10 @@ import 'package:art_app/db/home/entity/home.dart';
 import 'package:art_app/utils/log/log.utils.dart';
 import 'home/dao/home_dao.dart';
 
-
-
 class HomeDBUtils {
-  
   /// 进入初始化
-  static Future<HomeDataBase> get db => $FloorHomeDataBase.databaseBuilder('app_datbase.db').build();
+  static Future<HomeDataBase> get db =>
+      $FloorHomeDataBase.databaseBuilder('app_datbase.db').build();
 
   /// 初始化dao
   static HomeDao? to() {
@@ -17,7 +15,7 @@ class HomeDBUtils {
   }
 
   /// 插入列表数据
-  static Future<bool> insert({required HomeEntity v}) async{
+  static Future<bool> insert({required HomeEntity v}) async {
     try {
       await homeDataBase?.homeDao.insertHome(v);
       return Future.value(true);

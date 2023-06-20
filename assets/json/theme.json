@@ -1,0 +1,52 @@
+{
+  "success": {
+    "dark": "#F2DFBB",
+    "light": "#F2DFBB",
+    "///": "基础主题色"
+  },
+  "buttonSuccess": {
+    "dark": "#3D3D3D",
+    "light": "#3D3D3D",
+    "///": "按钮成功颜色"
+  },
+  "buttonDisabled": {
+    "dark": "#BBBBBB",
+    "light": "#BBBBBB",
+    "///": "按钮禁用颜色"
+  },
+  "desColor": {
+    "dark": "#999999",
+    "light": "#999999",
+    "///": "说明文字颜色"
+  },
+  "remarkColor": {
+    "dark": "#666666",
+    "light": "#666666",
+    "///": "备注文字颜色"
+  },
+  "warningColor": {
+    "dark": "#F3B436",
+    "light": "#F3B436",
+    "///": "备注文字颜色"
+  },
+  "warningDesColor": {
+    "dark": "#C1874D",
+    "light": "#C1874D",
+    "///": "备注文字颜色"
+  },
+  "moneycolor": {
+    "dark": "#F14B4B",
+    "light": "#F14B4B",
+    "///": "折扣文字颜色"
+  },
+  "selectBg": {
+    "dark": "#F3B436",
+    "light": "#F3B436",
+    "///": "选中背景颜色"
+  },
+  "bottomBarBg": {
+    "dark": "#252525",
+    "light": "#252525",
+    "///": "底部导航栏颜色"
+  }
+}

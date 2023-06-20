@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:get/get.dart';
 
-
 class MarketView extends StatefulWidget {
   const MarketView({super.key});
 
@@ -16,10 +15,8 @@ class MarketView extends StatefulWidget {
   State<MarketView> createState() => _MarketViewState();
 }
 
-
-
-class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMixin{
-
+class _MarketViewState extends State<MarketView>
+    with AutomaticKeepAliveClientMixin {
   final controller = MarketController.to;
 
   @override
@@ -121,12 +118,11 @@ class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMi
               ),
             ),
             SliverPersistentHeader(
-              floating: true,
-              pinned: true,
+                floating: true,
+                pinned: true,
                 delegate:
                     CustomSliverPersistentHeader(child: const Text('data'))),
-            
-                
+
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate((context, index) {
                 return Container(
@@ -140,9 +136,9 @@ class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMi
             // SliverFillViewport(delegate: delegate)
             //  SliverList.builder(
             // itemBuilder: (c, i) => Container(height: 1, color: Colors.red, child: Text('777'))
-          // ),
+            // ),
           ],
-         
+
           // ListView.builder(
           //   // physics: const ClampingScrollPhysics(),
           //   itemBuilder: (c, i) => Container(height: 50, color: Colors.red, child: Text('777'))
@@ -151,7 +147,7 @@ class _MarketViewState extends State<MarketView> with AutomaticKeepAliveClientMi
       ),
     )));
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

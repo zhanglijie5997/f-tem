@@ -23,61 +23,57 @@ class WebviewView extends GetView<WebviewController> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: const Icon(Icons.more_horiz_rounded).onTap(() {
-                Get.bottomSheet(
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minHeight: 100,
+                Get.bottomSheet(ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 100,
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(
+                        bottom: context.mediaQueryPadding.bottom),
+                    decoration: BoxDecoration(
+                      color: context.theme.scaffoldBackgroundColor,
                     ),
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.only(bottom: context.mediaQueryPadding.bottom),
-                      decoration: BoxDecoration(
-                        color: context.theme.scaffoldBackgroundColor,
-                      ),
-                      child: UnconstrainedBox(
-                        child: Column(
-                          children: [
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
+                    child: UnconstrainedBox(
+                      child: Column(
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
                                 maxWidth: context.mediaQuerySize.width,
                                 minWidth: context.mediaQuerySize.width,
                                 minHeight: 50,
-                                maxHeight: 90
-                              ),
-                              child: ListView.builder(
-                                padding:const EdgeInsets.all(20),
+                                maxHeight: 90),
+                            child: ListView.builder(
+                                padding: const EdgeInsets.all(20),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.options.length,
                                 itemBuilder: (c, i) {
                                   final e = controller.options[i];
                                   return GestureDetector(
-                                    onTap: () {
-                                      print('object');
-                                      Get.back();
-                                      controller.optionsCallback(e);
-                                    },
-                                    child: Column(
-                                      children: [
-                                        e.icon,
-                                        Text(e.name)
-                                      ],
-                                    )
-                                  );
-                                } 
-                              ),
-                            ),
-                            TextButton(onPressed: () {
-                              Get.back();
-                            }, child: Text('取消', style: context.textTheme.bodyMedium?.copyWith(
-                              color: context.customTheme?.success, fontSize: 18
-                            )))
-                          ],
-                        ),
+                                      onTap: () {
+                                        print('object');
+                                        Get.back();
+                                        controller.optionsCallback(e);
+                                      },
+                                      child: Column(
+                                        children: [e.icon, Text(e.name)],
+                                      ));
+                                }),
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child: Text('取消',
+                                  style: context.textTheme.bodyMedium?.copyWith(
+                                      color: context.customTheme?.success,
+                                      fontSize: 18)))
+                        ],
                       ),
                     ),
-                  )
-                );
+                  ),
+                ));
               }),
             )
           ],
@@ -85,7 +81,6 @@ class WebviewView extends GetView<WebviewController> {
         body: Stack(
           children: [
             InAppWebView(
-              
               initialUrlRequest:
                   URLRequest(url: Uri.parse("https://yanjie.art")),
               initialOptions: controller.webViewOptions,

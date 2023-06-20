@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 extension StringExt on String {
@@ -9,4 +11,10 @@ extension StringExt on String {
     }
     return Color(int.parse(_, radix: 16));
   }
+
+  Map<String, dynamic> toJson() => jsonDecode(this);
+
+  String removeFirst(Pattern pattern, [int startIndex = 0]) =>
+      replaceFirst(pattern, '', startIndex);
+  String removeAll(Pattern pattern) => replaceAll(pattern, '');
 }

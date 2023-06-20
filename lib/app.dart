@@ -12,6 +12,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:screenshot_callback/screenshot_callback.dart';
 import 'dart:ui' as ui;
 import 'generated/locales.g.dart';
+
 class App extends StatelessWidget {
   App({super.key});
   final GlobalKey globalkey = GlobalKey();
@@ -41,11 +42,12 @@ class App extends StatelessWidget {
       final image = await capture();
       LogUtil.d('截屏成功');
 
-      SmartDialog.show(builder: (c) => SizedBox(
-        width: context.mediaQuerySize.width * .9,
-        height: context.mediaQuerySize.height * .9,
-        child: Image.memory(image),
-      ) );
+      SmartDialog.show(
+          builder: (c) => SizedBox(
+                width: context.mediaQuerySize.width * .9,
+                height: context.mediaQuerySize.height * .9,
+                child: Image.memory(image),
+              ));
     });
   }
 

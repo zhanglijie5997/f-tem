@@ -20,11 +20,12 @@ extension ScrollControllerExt on ScrollController {
   Future animatedScrollToBottom([bool? isScrollToBottom]) async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (isScrollToBottom ?? true) {
-         if (position.maxScrollExtent - position.pixels > 500) {
+        if (position.maxScrollExtent - position.pixels > 500) {
           jumpTo(position.pixels - 500);
           await SchedulerBinding.instance.endOfFrame;
         }
-        if (position.pixels != position.maxScrollExtent && (isScrollToBottom ?? true)) {
+        if (position.pixels != position.maxScrollExtent &&
+            (isScrollToBottom ?? true)) {
           animateTo(position.maxScrollExtent,
               duration: 300.milliseconds, curve: Curves.linear);
           await SchedulerBinding.instance.endOfFrame;
@@ -214,7 +215,6 @@ class _ChatListViewState extends State<CustomChatListView>
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     widget.scrollController?.addListener(() {
-      
       if (widget.enabledBottomLoad && _isBottom && _bottomHasMore) {
         _onScrollToBottomLoadMore();
       } else if (widget.enabledTopLoad && _isTop && _topHasMore) {
@@ -290,68 +290,71 @@ class _ChatListViewState extends State<CustomChatListView>
         final max = (widget.scrollController?.position.maxScrollExtent ?? 0);
         // ignore: avoid_print
         print('$pix $max');
-        if ((widget.scrollController?.position.pixels ?? 0) > (widget.scrollController?.position.maxScrollExtent ?? 0)) {
+        if ((widget.scrollController?.position.pixels ?? 0) >
+            (widget.scrollController?.position.maxScrollExtent ?? 0)) {
           _isScollToBottom = true;
-        }else {
-          _isScollToBottom = (widget.scrollController?.position.maxScrollExtent ?? 0) == (widget.scrollController?.position.pixels ?? 0) ;
+        } else {
+          _isScollToBottom =
+              (widget.scrollController?.position.maxScrollExtent ?? 0) ==
+                  (widget.scrollController?.position.pixels ?? 0);
         }
       },
       child: CustomScrollView(
-            center: centerKey,
-            controller: widget.scrollController,
-            physics: const AlwaysScrollableScrollPhysics(),
-            // reverse: true,
-            // shrinkWrap: false,
-            slivers: <Widget>[
-              if (_topHasMore && widget.enabledTopLoad)
-                SliverToBoxAdapter(child: _buildLoadMoreView()),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (_, index) {
-                    return widget.itemBuilder(
-                      context,
-                      index,
-                      widget.controller.topList.length - index - 1,
-                      widget.controller.topList.elementAt(
-                          widget.controller.topList.length - 1 - index),
-                      // widget.controller.topList.elementAt(index),
-                    );
-                  },
-                  childCount: widget.controller.topList.length,
-                ),
-              ),
-    
-              SliverList(
-                key: centerKey,
-                delegate: SliverChildBuilderDelegate(
-                  (_, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                          bottom: index == widget.controller.bottomList.length - 1
-                              ? 8.0
-                              : 0),
-                      child: Column(
-                        children: [
-                          widget.itemBuilder(
-                            context,
-                            index,
-                            widget.controller.topList.length + index,
-                            widget.controller.bottomList[index],
-                          ),
-                          // Text("${widget.controller.bottomList.last?.content}")
-                        ],
+        center: centerKey,
+        controller: widget.scrollController,
+        physics: const AlwaysScrollableScrollPhysics(),
+        // reverse: true,
+        // shrinkWrap: false,
+        slivers: <Widget>[
+          if (_topHasMore && widget.enabledTopLoad)
+            SliverToBoxAdapter(child: _buildLoadMoreView()),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (_, index) {
+                return widget.itemBuilder(
+                  context,
+                  index,
+                  widget.controller.topList.length - index - 1,
+                  widget.controller.topList
+                      .elementAt(widget.controller.topList.length - 1 - index),
+                  // widget.controller.topList.elementAt(index),
+                );
+              },
+              childCount: widget.controller.topList.length,
+            ),
+          ),
+
+          SliverList(
+            key: centerKey,
+            delegate: SliverChildBuilderDelegate(
+              (_, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: index == widget.controller.bottomList.length - 1
+                          ? 8.0
+                          : 0),
+                  child: Column(
+                    children: [
+                      widget.itemBuilder(
+                        context,
+                        index,
+                        widget.controller.topList.length + index,
+                        widget.controller.bottomList[index],
                       ),
-                    );
-                  },
-                  childCount: widget.controller.bottomList.length,
-                ),
-              ),
-              // SliverToBoxAdapter(
-              //   child: Text("widget.controller.bottomList ${widget.controller.bottomList.length}"),
-              // ),
-              if (_bottomHasMore && widget.enabledBottomLoad)
-                SliverToBoxAdapter(child: _buildLoadMoreView()),
-            ],
+                      // Text("${widget.controller.bottomList.last?.content}")
+                    ],
+                  ),
+                );
+              },
+              childCount: widget.controller.bottomList.length,
+            ),
+          ),
+          // SliverToBoxAdapter(
+          //   child: Text("widget.controller.bottomList ${widget.controller.bottomList.length}"),
+          // ),
+          if (_bottomHasMore && widget.enabledBottomLoad)
+            SliverToBoxAdapter(child: _buildLoadMoreView()),
+        ],
       ),
     );
   }

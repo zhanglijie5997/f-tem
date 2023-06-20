@@ -62,22 +62,24 @@ class RootView extends GetView<RootController> {
                                                       ?.color)),
                                 ],
                               ),
-                               Transform.translate(
-                                 offset: const Offset(10, 0),
-                                 child:  SizedBox(
+                              Transform.translate(
+                                offset: const Offset(10, 0),
+                                child: SizedBox(
                                   width: 20,
                                   height: 20,
-                                  child: (e.badge?? 0) > 0 ? QqBadge(
-                                    text: '${e.badge}',
-                                    radius: 6,
-                                    onClearBadge: controller.cleanBadge,
-                                    textStyle: const TextStyle(
-                                      fontSize: 8,
-                                      color: Color(0xFFFFFFFF),
-                                    ),
-                                  ) : const SizedBox(),
-                              ),
-                               )
+                                  child: (e.badge ?? 0) > 0
+                                      ? QqBadge(
+                                          text: '${e.badge}',
+                                          radius: 6,
+                                          onClearBadge: controller.cleanBadge,
+                                          textStyle: const TextStyle(
+                                            fontSize: 8,
+                                            color: Color(0xFFFFFFFF),
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                ),
+                              )
                             ],
                           ),
                         ).onTap(() {

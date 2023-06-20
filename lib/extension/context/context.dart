@@ -8,11 +8,12 @@ extension ContextExt on BuildContext {
   /// 选择图片插件
   /// * [max] 最大选择数量
   /// * [requestType] 选择类型
-  Future<List<AssetEntity>?> selectImage({int max = 1, RequestType requestType = RequestType.common}) {
-    return AssetPicker.pickAssets(this, pickerConfig: AssetPickerConfig(
-      maxAssets:  max,
-      requestType: requestType,
-      specialItemPosition: SpecialItemPosition.prepend
-    ));
+  Future<List<AssetEntity>?> selectImage(
+      {int max = 1, RequestType requestType = RequestType.common}) {
+    return AssetPicker.pickAssets(this,
+        pickerConfig: AssetPickerConfig(
+            maxAssets: max,
+            requestType: requestType,
+            specialItemPosition: SpecialItemPosition.prepend));
   }
 }

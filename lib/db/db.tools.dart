@@ -5,7 +5,7 @@ import 'package:art_app/db/home/database.dart';
 HomeDataBase? homeDataBase;
 
 class DBInits {
-  static init() async{
+  static init() async {
     homeDataBase = await HomeDBUtils.db;
   }
 }

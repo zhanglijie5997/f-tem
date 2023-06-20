@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:get/get.dart';
 
-
 class MessageView extends StatefulWidget {
   const MessageView({super.key});
 
@@ -19,8 +18,8 @@ class MessageView extends StatefulWidget {
   State<MessageView> createState() => _MessageViewState();
 }
 
-
-class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClientMixin{
+class _MessageViewState extends State<MessageView>
+    with AutomaticKeepAliveClientMixin {
   final controller = MessageController.to;
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,10 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
                     itemBuilder: (context, index) {
                       return ClipRRect(
                           borderRadius: 6.radius,
-                          child:  CustomPreviewImg(tag: 'tag$index', path:  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg"));
+                          child: CustomPreviewImg(
+                              tag: 'tag$index',
+                              path:
+                                  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg"));
                     },
                     itemCount: 10,
                     itemWidth: double.infinity,
@@ -74,12 +76,15 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
                       child: Column(
                         children: [
                           ClipRRect(
-                              borderRadius: 22.radius,
-                              child: SizedBox(
+                            borderRadius: 22.radius,
+                            child: SizedBox(
                                 width: 44,
                                 height: 44,
-                                child: CustomPreviewImg(tag: 'tag$i', path:  "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg")),
-                              )
+                                child: CustomPreviewImg(
+                                    tag: 'tag$i',
+                                    path:
+                                        "https://yanjie-prod-1318263237.cos.ap-shanghai.myqcloud.com/platform/banner/1665613216283230208.jpg")),
+                          )
                         ],
                       ),
                     ),
@@ -115,36 +120,38 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
               ),
             ),
             SliverPersistentHeader(
-              floating: true,
-              pinned: true,
+                floating: true,
+                pinned: true,
                 delegate:
                     CustomSliverPersistentHeader(child: const Text('data'))),
-            
-                
+
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate((context, index) {
                 return Column(
                   children: [
                     ConstrainedBox(
-                       constraints: const BoxConstraints(minHeight: 43, maxWidth: 300, ),
+                      constraints: const BoxConstraints(
+                        minHeight: 43,
+                        maxWidth: 300,
+                      ),
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(10, 10, 20, 0),
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            centerSlice: Rect.fromLTRB(20, 20, 38, 38),
-                            image: AssetImage(Assets.assetsImagesChatBubule), fit: BoxFit.fill
+                          padding: const EdgeInsets.fromLTRB(10, 10, 20, 0),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                centerSlice: Rect.fromLTRB(20, 20, 38, 38),
+                                image:
+                                    AssetImage(Assets.assetsImagesChatBubule),
+                                fit: BoxFit.fill),
                           ),
-                        ),
-                    
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 200),
-                          child: SelectionArea(child:  Text(
-                            '1hello2233',
-                            style: context.textTheme.bodyMedium?.copyWith(
-                              fontSize: 22
-                            ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 200),
+                            child: SelectionArea(
+                                child: Text(
+                              '1hello2233',
+                              style: context.textTheme.bodyMedium
+                                  ?.copyWith(fontSize: 22),
+                            )),
                           )),
-                      )),
                     ),
                   ],
                 );
@@ -154,9 +161,9 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
             // SliverFillViewport(delegate: delegate)
             //  SliverList.builder(
             // itemBuilder: (c, i) => Container(height: 1, color: Colors.red, child: Text('777'))
-          // ),
+            // ),
           ],
-         
+
           // ListView.builder(
           //   // physics: const ClampingScrollPhysics(),
           //   itemBuilder: (c, i) => Container(height: 50, color: Colors.red, child: Text('777'))
@@ -165,7 +172,7 @@ class _MessageViewState extends State<MessageView> with AutomaticKeepAliveClient
       ),
     )));
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

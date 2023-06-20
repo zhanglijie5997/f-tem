@@ -1,3 +1,4 @@
+import 'package:art_app/constants/base.theme.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/utils/storage/storage.dart';
 import 'package:flutter/foundation.dart';
@@ -75,10 +76,49 @@ class ThemeDataConfig {
 class CustomTheme extends ThemeExtension<CustomTheme> {
   Color? success;
   Color? bottomBar;
-  CustomTheme({this.success, this.bottomBar});
+  Color? money;
+  Color? btnSuccess;
+  Color? btnDisabled;
+  Color? desColor;
+  Color? remarkColor;
+  Color? warningColor;
+  Color? warningDesColor;
+  Color? selectBg;
+
+  CustomTheme(
+      {this.success,
+      this.bottomBar,
+      this.money,
+      this.btnSuccess,
+      this.btnDisabled,
+      this.desColor,
+      this.remarkColor,
+      this.warningColor,
+      this.warningDesColor,
+      this.selectBg});
   @override
-  CustomTheme copyWith({Color? success, Color? bottomBar}) {
-    return CustomTheme(success: success, bottomBar: bottomBar);
+  CustomTheme copyWith(
+      {Color? success,
+      Color? bottomBar,
+      Color? money,
+      Color? btnSuccess,
+      Color? btnDisabled,
+      Color? desColor,
+      Color? remarkColor,
+      Color? warningColor,
+      Color? warningDesColor,
+      Color? selectBg}) {
+    return CustomTheme(
+        success: success,
+        bottomBar: bottomBar,
+        money: money,
+        btnSuccess: btnSuccess,
+        btnDisabled: btnDisabled,
+        desColor: desColor,
+        remarkColor: remarkColor,
+        warningColor: warningColor,
+        warningDesColor: warningDesColor,
+        selectBg: selectBg);
   }
 
   @override
@@ -86,9 +126,27 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
     return CustomTheme(success: other.success);
   }
 
-  static CustomTheme light() =>
-      CustomTheme(success: '#F2DFBB'.color(), bottomBar: '#252525'.color());
+  static CustomTheme light() => CustomTheme(
+      success: BaseTheme.successLight,
+      bottomBar: BaseTheme.bottomBarBgLight,
+      money: BaseTheme.moneycolorLight,
+      btnSuccess: BaseTheme.buttonSuccessLight,
+      btnDisabled: BaseTheme.buttonDisabledLight,
+      desColor: BaseTheme.desColorLight,
+      remarkColor: BaseTheme.remarkColorLight,
+      warningColor: BaseTheme.warningColorLight,
+      warningDesColor: BaseTheme.warningDesColorLight,
+      selectBg: BaseTheme.selectBgLight);
 
-  static CustomTheme dark() =>
-      CustomTheme(success: '#F2DFBB'.color(), bottomBar: '#252525'.color());
+  static CustomTheme dark() => CustomTheme(
+      success: BaseTheme.successDark,
+      bottomBar: BaseTheme.bottomBarBgLight,
+      money: BaseTheme.moneycolorDark,
+      btnSuccess: BaseTheme.buttonSuccessDark,
+      btnDisabled: BaseTheme.buttonDisabledDark,
+      desColor: BaseTheme.desColorDark,
+      remarkColor: BaseTheme.remarkColorDark,
+      warningColor: BaseTheme.warningColorDark,
+      warningDesColor: BaseTheme.warningDesColorDark,
+      selectBg: BaseTheme.selectBgDark);
 }

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LanguageService extends GetxService {
-  static LanguageService get to => Get.find<LanguageService>(); 
+  static LanguageService get to => Get.find<LanguageService>();
 
   final _language = (const Locale('zh', 'CN')).obs;
   Locale get language => _language.value;
 
   updateLanguage(Locale v) {
     _language.value = v;
-   
+
     Get.updateLocale(v);
     StorageUtils.chanageLanguage('${v.languageCode},${v.countryCode}');
   }
@@ -25,9 +25,8 @@ class LanguageService extends GetxService {
       LogUtil.w(list);
       _language.value = Locale(list[0], list[1]);
       Get.updateLocale(_language.value);
-
     }
-    
+
     super.onInit();
   }
 }

@@ -3,7 +3,6 @@ import 'package:art_app/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class MeView extends StatefulWidget {
   const MeView({super.key});
 
@@ -11,9 +10,7 @@ class MeView extends StatefulWidget {
   State<MeView> createState() => _MeViewState();
 }
 
-
-class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin{
-
+class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -23,7 +20,7 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin{
       }),
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

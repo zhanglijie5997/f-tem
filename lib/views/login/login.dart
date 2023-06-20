@@ -10,9 +10,9 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('LoginPage')), 
-      body: const Placeholder().onTap(() {
-        controller.showCaptcha();
-      }));
+        appBar: AppBar(title: const Text('LoginPage')),
+        body: const Placeholder().onTap(() {
+          controller.showCaptcha();
+        }));
   }
 }

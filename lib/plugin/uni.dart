@@ -13,7 +13,7 @@ class FlutterOpenimUnimp {
   Future<bool?> isInitialize() {
     print(_channel.name);
     // _channel.setMethodCallHandler( (call)async {
-    //   return 
+    //   return
     //  })
     return _channel.invokeMethod<bool>('isInitialize');
   }

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 class GlobalServiceController extends GetxService {
   static GlobalServiceController get to => Get.find<GlobalServiceController>();
 
-
   @override
   void onInit() {
     NotificationUtils.createTestChannel('Editable channel');

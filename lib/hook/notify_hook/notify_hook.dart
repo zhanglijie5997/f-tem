@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: deprecated_member_use
 
 import 'dart:async';
@@ -17,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+
 // import 'package:shared_preferences/shared_preferences.dart';
 String lorenIpsumText =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut '
@@ -24,6 +23,7 @@ String lorenIpsumText =
     'ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat '
     'nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit'
     'anim id est laborum';
+
 class NotificationsController {
   static ReceivedAction? initialCallAction;
 
@@ -271,27 +271,20 @@ class NotificationsController {
   //    NOTIFICATIONS EVENT LISTENERS
   // ***************************************************************
 
-
   /// Use this method to detect when a new notification or a schedule is created
   @pragma("vm:entry-point")
   static Future<void> onNotificationCreatedMethod(
-      ReceivedNotification receivedNotification) async {
-   
-  }
+      ReceivedNotification receivedNotification) async {}
 
   /// Use this method to detect every time that a new notification is displayed
   @pragma("vm:entry-point")
   static Future<void> onNotificationDisplayedMethod(
-      ReceivedNotification receivedNotification) async {
-    
-  }
+      ReceivedNotification receivedNotification) async {}
 
   /// Use this method to detect if the user dismissed a notification
   @pragma("vm:entry-point")
   static Future<void> onDismissActionReceivedMethod(
-      ReceivedAction receivedAction) async {
-    
-  }
+      ReceivedAction receivedAction) async {}
 
   /// Use this method to detect when the user taps on a notification or action button
   @pragma("vm:entry-point")
@@ -306,13 +299,11 @@ class NotificationsController {
 
     // SilentBackgroundAction runs on background thread and cannot show
     // UI/visual elements
-    if (receivedAction.actionType != ActionType.SilentBackgroundAction) {
-      
-    }
+    if (receivedAction.actionType != ActionType.SilentBackgroundAction) {}
 
     switch (receivedAction.channelKey) {
       case 'call_channel':
-        if (receivedAction.actionLifeCycle != NotificationLifeCycle.AppKilled){
+        if (receivedAction.actionLifeCycle != NotificationLifeCycle.AppKilled) {
           await receiveCallNotificationAction(receivedAction);
         }
         break;
@@ -356,7 +347,6 @@ class NotificationsController {
   static Future<void> receiveButtonInputText(
       ReceivedAction receivedAction) async {
     debugPrint('Input Button Message: "${receivedAction.buttonKeyInput}"');
-    
   }
 
   static Future<void> receiveStandardNotificationAction(
@@ -439,10 +429,10 @@ class NotificationsController {
   }
 
   static Future<void> interceptInitialCallActionRequest() async {
-    ReceivedAction? receivedAction = await AwesomeNotifications()
-        .getInitialNotificationAction();
+    ReceivedAction? receivedAction =
+        await AwesomeNotifications().getInitialNotificationAction();
 
-    if(receivedAction?.channelKey == 'call_channel') {
+    if (receivedAction?.channelKey == 'call_channel') {
       initialCallAction = receivedAction;
     }
   }
@@ -481,7 +471,7 @@ class NotificationUtils {
     bool isAllowed = await AwesomeNotifications().isNotificationAllowed();
     if (!isAllowed) {
       // ignore: use_build_context_synchronously
-      await   showDialog(
+      await showDialog(
           context: context,
           builder: (context) => AlertDialog(
                 backgroundColor: const Color(0xfffbfbfb),
@@ -601,10 +591,8 @@ class NotificationUtils {
                       height: MediaQuery.of(context).size.height * 0.3,
                       fit: BoxFit.fitWidth,
                     ),
-                     Text(
-                      'To proceed, you need to enable the permissions above${channelKey?.isEmpty ?? true
-                              ? ''
-                              : ' on channel $channelKey'}:',
+                    Text(
+                      'To proceed, you need to enable the permissions above${channelKey?.isEmpty ?? true ? '' : ' on channel $channelKey'}:',
                       maxLines: 2,
                       textAlign: TextAlign.center,
                     ),
@@ -615,8 +603,8 @@ class NotificationUtils {
                           .replaceAll('NotificationPermission.', ''),
                       maxLines: 2,
                       textAlign: TextAlign.center,
-                      style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -741,7 +729,8 @@ class NotificationUtils {
       id: id,
       channelKey: 'basic_channel',
       category: NotificationCategory.Social,
-      title: 'Emojis are awesome too! ${Emojis.smile_face_with_tongue}${Emojis.smile_smiling_face}${Emojis.smile_smiling_face_with_heart_eyes}',
+      title:
+          'Emojis are awesome too! ${Emojis.smile_face_with_tongue}${Emojis.smile_smiling_face}${Emojis.smile_smiling_face_with_heart_eyes}',
       body:
           'Simple body with a bunch of Emojis! ${Emojis.transport_police_car} ${Emojis.animals_dog} ${Emojis.flag_UnitedStates} ${Emojis.person_baby}',
       largeIcon: 'https://tecnoblog.net/wp-content/uploads/2019/09/emoji.jpg',
@@ -966,19 +955,20 @@ class NotificationUtils {
     return 'unknow';
   }
 
-  static showIncomingCallChannelNotification(String callerName, String phoneNumber) {
+  static showIncomingCallChannelNotification(
+      String callerName, String phoneNumber) {
     AwesomeNotifications().createNotification(
-    content: NotificationContent(
-      id: 1,
-      channelKey: 'incoming_call_channel',
-      title: 'Incoming Call',
-      body: '$callerName is calling',
-      summary: '($phoneNumber)',
-      bigPicture: 'assets/images/call.png',
-      notificationLayout: NotificationLayout.BigPicture,
-      payload: {'type': 'incoming_call'},
-    ),
-  );
+      content: NotificationContent(
+        id: 1,
+        channelKey: 'incoming_call_channel',
+        title: 'Incoming Call',
+        body: '$callerName is calling',
+        summary: '($phoneNumber)',
+        bigPicture: 'assets/images/call.png',
+        notificationLayout: NotificationLayout.BigPicture,
+        payload: {'type': 'incoming_call'},
+      ),
+    );
   }
 
   static Future<void> showCallNotification(int id, int timeToWait) async {
@@ -1534,7 +1524,9 @@ class NotificationUtils {
             notificationLayout: NotificationLayout.BigPicture,
             payload: {'uuid': 'uuid-test'}));
   }
-  static Future<String> downloadAndSaveImageOnDisk(String url, String fileName) async {
+
+  static Future<String> downloadAndSaveImageOnDisk(
+      String url, String fileName) async {
     var directory = await getApplicationDocumentsDirectory();
     var filePath = '${directory.path}/$fileName';
     var file = File(filePath);
@@ -1546,6 +1538,7 @@ class NotificationUtils {
 
     return filePath;
   }
+
   /// Just to simulates a file already saved inside device storage
   static Future<void> showBigPictureFileNotification(int id) async {
     String newFilePath = await downloadAndSaveImageOnDisk(
@@ -1776,7 +1769,8 @@ class NotificationUtils {
         actionButtons: [
           NotificationActionButton(
               key: 'MEDIA_PREV',
-              icon: 'resource://drawable/res_ic_prev${MediaPlayerCentral.hasPreviousMedia ? '' : '_disabled'}',
+              icon:
+                  'resource://drawable/res_ic_prev${MediaPlayerCentral.hasPreviousMedia ? '' : '_disabled'}',
               label: 'Previous',
               autoDismissible: false,
               showInCompactView: false,
@@ -1792,7 +1786,8 @@ class NotificationUtils {
                   actionType: ActionType.KeepOnTop)
               : NotificationActionButton(
                   key: 'MEDIA_PLAY',
-                  icon: 'resource://drawable/res_ic_play${MediaPlayerCentral.hasAnyMedia ? '' : '_disabled'}',
+                  icon:
+                      'resource://drawable/res_ic_play${MediaPlayerCentral.hasAnyMedia ? '' : '_disabled'}',
                   label: 'Play',
                   autoDismissible: false,
                   showInCompactView: true,
@@ -1800,7 +1795,8 @@ class NotificationUtils {
                   actionType: ActionType.KeepOnTop),
           NotificationActionButton(
               key: 'MEDIA_NEXT',
-              icon: 'resource://drawable/res_ic_next${MediaPlayerCentral.hasNextMedia ? '' : '_disabled'}',
+              icon:
+                  'resource://drawable/res_ic_next${MediaPlayerCentral.hasNextMedia ? '' : '_disabled'}',
               label: 'Previous',
               showInCompactView: true,
               enabled: MediaPlayerCentral.hasNextMedia,
@@ -2051,9 +2047,11 @@ class NotificationUtils {
             body:
                 'This notification was schedule to repeat at every 5 seconds.'),
         schedule: NotificationAndroidCrontab(
-            initialDateTime: DateTime.now().add(const Duration(seconds: 10)).toUtc(),
-            expirationDateTime:
-                DateTime.now().add(const Duration(seconds: 10, minutes: 1)).toUtc(),
+            initialDateTime:
+                DateTime.now().add(const Duration(seconds: 10)).toUtc(),
+            expirationDateTime: DateTime.now()
+                .add(const Duration(seconds: 10, minutes: 1))
+                .toUtc(),
             crontabExpression: '/5 * * * * ? *',
             timeZone: localTimeZone,
             repeats: true));
@@ -2098,8 +2096,7 @@ class NotificationUtils {
           id: -1,
           channelKey: 'scheduled',
           title: 'Just in time!',
-          body:
-              'This notification was schedule to shows at ? } utc)',
+          body: 'This notification was schedule to shows at ? } utc)',
           notificationLayout: NotificationLayout.BigPicture,
           bigPicture: 'asset://assets/images/delivery.jpeg',
           payload: {'uuid': 'uuid-test'},
@@ -2183,8 +2180,6 @@ class NotificationUtils {
               locked: true));
     }
   }
-
-  
 
   static Future<void> showIndeterminateProgressNotification(int id) async {
     await AwesomeNotifications().createNotification(
@@ -2279,8 +2274,6 @@ class NotificationUtils {
   }
 }
 
-
-
 class CloseCaptionElement {
   Duration start;
   Duration end;
@@ -2350,19 +2343,17 @@ class MediaModel {
   String get diskImagePath => _diskImagePath;
 }
 
-
 int createUniqueID(int maxValue) {
   Random random = Random();
   return random.nextInt(maxValue);
 }
 
-
 class NotificationController {
   /// 初始化
   static Future<void> initializeLocalNotifications() async {
     await AwesomeNotifications().initialize(
-      'resource://drawable/app_icon',
-      [
+        'resource://drawable/app_icon',
+        [
           NotificationChannel(
               channelGroupKey: 'basic_tests',
               channelKey: 'basic_channel',
@@ -2581,8 +2572,7 @@ class NotificationController {
               channelGroupKey: 'media_player_tests',
               channelGroupName: 'Media Player tests')
         ],
-        debug: true
-    );
+        debug: true);
   }
 
   // 重置小红点计数器

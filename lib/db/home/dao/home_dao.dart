@@ -10,5 +10,4 @@ abstract class HomeDao {
   Future<void> insertHome(HomeEntity v);
 
   // @update
-
 }

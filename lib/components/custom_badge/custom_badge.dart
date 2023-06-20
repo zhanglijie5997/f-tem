@@ -80,7 +80,6 @@ class _QqBadgeState extends State<QqBadge> {
                 if (_overDistance) widget.onClearBadge?.call();
                 bigCirclePoint = Point(bigCircleRadius, bigCircleRadius);
                 setState(() {});
-
               },
               child: SizedBox(
                 width: bigCircleRadius * 2,

@@ -42,6 +42,5 @@ class ScanController extends GetxController {
       print(v);
     });
     super.onInit();
-  
   }
 }
