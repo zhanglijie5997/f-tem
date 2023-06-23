@@ -46,8 +46,8 @@ class _CustomImageState extends State<CustomImage>
           case LoadState.loading:
             _controller.reset();
             return Image.asset(
-              Assets.assetsImagesHome,
-              fit: BoxFit.fill,
+              Assets.assetsImagesNoEmptyV3,
+              fit: BoxFit.contain,
             );
           case LoadState.completed:
             if (state.wasSynchronouslyLoaded) {
@@ -72,18 +72,9 @@ class _CustomImageState extends State<CustomImage>
                 fit: StackFit.expand,
                 children: <Widget>[
                   Image.asset(
-                    Assets.assetsImagesHome,
-                    fit: BoxFit.fill,
+                    Assets.assetsImagesNoEmptyV3,
+                    fit: BoxFit.contain,
                   ),
-                  const Positioned(
-                    bottom: 0.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Text(
-                      'load image failed, click to reload',
-                      textAlign: TextAlign.center,
-                    ),
-                  )
                 ],
               ),
               onTap: () {

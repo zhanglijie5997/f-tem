@@ -3,5 +3,11 @@
   "home": "首页",
   "me": "我的",
   "market": "市场",
-  "message": "消息"
+  "message": "消息",
+  "selectedCollection": "精选藏品",
+  "firstCollection": "首发藏品",
+  "release": "发行",
+  "part": "份",
+  "creator": "创作者",
+  "announcementDetail": "公告详情"
 }

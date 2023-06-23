@@ -1,8 +1,6 @@
 import 'package:art_app/components/custom_preview_img/custom_preview_img.dart';
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
-import 'package:art_app/utils/log/log.utils.dart';
-import 'package:art_app/views/market/controller/controller.dart';
 import 'package:art_app/views/message/controller/controller.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 // import 'package:art_app/generated/locales.g.dart';

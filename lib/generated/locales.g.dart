@@ -16,6 +16,12 @@ class LocaleKeys {
   static const me = 'me';
   static const market = 'market';
   static const message = 'message';
+  static const selectedCollection = 'selectedCollection';
+  static const firstCollection = 'firstCollection';
+  static const release = 'release';
+  static const part = 'part';
+  static const creator = 'creator';
+  static const announcementDetail = 'announcementDetail';
 }
 
 class Locales {
@@ -25,6 +31,12 @@ class Locales {
     'me': '我的',
     'market': '市场',
     'message': '消息',
+    'selectedCollection': '精选藏品',
+    'firstCollection': '首发藏品',
+    'release': '发行',
+    'part': '份',
+    'creator': '创作者',
+    'announcementDetail': '公告详情',
   };
   static const en_US = {
     'hello': 'hello',
@@ -32,5 +44,11 @@ class Locales {
     'me': 'Me',
     'market': 'Market',
     'message': 'Message',
+    'selectedCollection': 'Selected collection',
+    'firstCollection': 'First Collection',
+    'release': 'Release',
+    'part': 'Part',
+    'creator': 'Creator',
+    'announcementDetail': 'Announcement Detail',
   };
 }

@@ -221,10 +221,10 @@ packages:
     dependency: transitive
     description:
       name: csslib
-      sha256: "706b5707578e0c1b4b7550f64078f0a0f19dec3f50a178ffae7006b0a9ca58fb"
+      sha256: "831883fb353c8bdc1d71979e5b342c7d88acfbc643113c14ae51e2442ea0f20f"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "0.17.3"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -313,6 +313,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.5.3"
+  extended_nested_scroll_view:
+    dependency: "direct main"
+    description:
+      name: extended_nested_scroll_view
+      sha256: "49c0de4f648a7ed4dc5501db7855aec38582d076ef61bb1708ba73d58f0f2525"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "6.1.1"
   fake_async:
     dependency: transitive
     description:
@@ -469,6 +477,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_widget_from_html_core:
+    dependency: "direct main"
+    description:
+      name: flutter_widget_from_html_core
+      sha256: "77f05cd7a738078dcdbe07741140d58b2fe7509197f3855a91269fb5a90f4bee"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.10.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -485,6 +501,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
+  fwfh_text_style:
+    dependency: transitive
+    description:
+      name: fwfh_text_style
+      sha256: f0883ccb64b7bb3f2a7a091542c2e834fc3e2a6aa54158f46b3c43b55675d8f7
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.22.8+3"
   get:
     dependency: "direct main"
     description:
@@ -949,6 +973,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.3"
+  pull_to_refresh_notification:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh_notification
+      sha256: "3f27b9695c98770db3f9f50550e5ab44a6d946d022311a55bbe6d5cd4c69a1ad"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.1"
   screenshot_callback:
     dependency: "direct main"
     description:
@@ -1290,6 +1322,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.16"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      sha256: dd5cc11e13494f432d15939c3aa8ae76844c42b723398643ce9addb88a5ed420
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.0+2"
   watcher:
     dependency: transitive
     description:

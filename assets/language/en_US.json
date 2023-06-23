@@ -3,5 +3,11 @@
   "home": "Home",
   "me": "Me",
   "market": "Market",
-  "message": "Message"
+  "message": "Message",
+  "selectedCollection": "Selected collection",
+  "firstCollection": "First Collection",
+  "release": "Release",
+  "part": "Part",
+  "creator": "Creator",
+  "announcementDetail": "Announcement Detail"
 }

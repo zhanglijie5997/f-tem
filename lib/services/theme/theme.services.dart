@@ -1,3 +1,4 @@
+import 'package:art_app/components/custom_scroll_behavior/custom_scroll_behavior.dart';
 import 'package:art_app/constants/base.theme.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/utils/storage/storage.dart';
@@ -58,6 +59,19 @@ class ThemeService extends GetxService {
 class ThemeDataConfig {
   static ThemeData get light => ThemeData.light(useMaterial3: true).copyWith(
       extensions: [CustomTheme.light()],
+      appBarTheme: AppBarTheme(
+        backgroundColor: BaseTheme.defaultBgLight,
+      ),
+      splashFactory: NoSplashFactory(),
+      scaffoldBackgroundColor: BaseTheme.defaultBgLight,
+      textTheme: const TextTheme(
+        bodyMedium: TextStyle(fontSize: 12),
+        bodyLarge: TextStyle(fontSize: 16),
+      ),
+      dividerColor: BaseTheme.bottomBarBgLight,
+      dividerTheme: DividerThemeData(
+        color: BaseTheme.bottomBarBgLight,
+      ),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(
@@ -65,6 +79,19 @@ class ThemeDataConfig {
 
   static ThemeData get dark => ThemeData.dark(useMaterial3: true).copyWith(
       extensions: [CustomTheme.dark()],
+      appBarTheme: AppBarTheme(
+        backgroundColor: BaseTheme.defaultBgDark,
+      ),
+      scaffoldBackgroundColor: BaseTheme.defaultBgDark,
+      splashFactory: NoSplashFactory(),
+      textTheme: const TextTheme(
+        bodyMedium: TextStyle(fontSize: 12),
+        bodyLarge: TextStyle(fontSize: 16),
+      ),
+      dividerColor: BaseTheme.bottomBarBgDark,
+      dividerTheme: DividerThemeData(
+        color: BaseTheme.bottomBarBgDark,
+      ),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(
@@ -84,7 +111,9 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   Color? warningColor;
   Color? warningDesColor;
   Color? selectBg;
-
+  Color? tagBg;
+  Color? tagText;
+  Color? subtitle;
   CustomTheme(
       {this.success,
       this.bottomBar,
@@ -95,7 +124,10 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       this.remarkColor,
       this.warningColor,
       this.warningDesColor,
-      this.selectBg});
+      this.selectBg,
+      this.tagBg,
+      this.tagText,
+      this.subtitle});
   @override
   CustomTheme copyWith(
       {Color? success,
@@ -107,7 +139,10 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       Color? remarkColor,
       Color? warningColor,
       Color? warningDesColor,
-      Color? selectBg}) {
+      Color? selectBg,
+      Color? tagBg,
+      Color? tagText,
+      Color? subtitle}) {
     return CustomTheme(
         success: success,
         bottomBar: bottomBar,
@@ -118,7 +153,10 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
         remarkColor: remarkColor,
         warningColor: warningColor,
         warningDesColor: warningDesColor,
-        selectBg: selectBg);
+        selectBg: selectBg,
+        tagBg: tagBg,
+        tagText: tagText,
+        subtitle: subtitle);
   }
 
   @override
@@ -136,7 +174,10 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       remarkColor: BaseTheme.remarkColorLight,
       warningColor: BaseTheme.warningColorLight,
       warningDesColor: BaseTheme.warningDesColorLight,
-      selectBg: BaseTheme.selectBgLight);
+      selectBg: BaseTheme.selectBgLight,
+      tagBg: BaseTheme.tagBgLight,
+      tagText: BaseTheme.tagTextLight,
+      subtitle: BaseTheme.subtitleLight);
 
   static CustomTheme dark() => CustomTheme(
       success: BaseTheme.successDark,
@@ -148,5 +189,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       remarkColor: BaseTheme.remarkColorDark,
       warningColor: BaseTheme.warningColorDark,
       warningDesColor: BaseTheme.warningDesColorDark,
-      selectBg: BaseTheme.selectBgDark);
+      selectBg: BaseTheme.selectBgDark,
+      tagBg: BaseTheme.tagBgDark,
+      tagText: BaseTheme.tagTextDark,
+      subtitle: BaseTheme.subtitleDark);
 }

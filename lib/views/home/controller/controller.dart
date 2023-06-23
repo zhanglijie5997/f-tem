@@ -1,12 +1,36 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:art_app/constants/assets.dart';
+import 'package:art_app/generated/locales.g.dart';
 import 'package:art_app/models/accountment_list/accountment_list.dart';
+import 'package:art_app/models/banner_list/banner_list.dart';
 import 'package:art_app/models/home_position_list/home_position_list.dart';
+import 'package:art_app/models/nft_home_calendar/row.dart';
 import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/home/services/services.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Row;
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class TabsModel {
+  String? name;
+  String? type;
+
+  TabsModel({this.name, this.type});
+
+  TabsModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    type = json['type'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['type'] = type;
+    return data;
+  }
+}
+
+class HomeController extends GetxController with GetTickerProviderStateMixin {
   static HomeController get to => Get.find<HomeController>();
   final ScrollController scrollController = ScrollController();
   final logo = {
@@ -25,7 +49,31 @@ class HomeController extends GetxController {
   final _posList = const HomePositionList().obs;
   HomePositionList get posList => _posList.value;
 
-  init() async {
+  /// banner
+  final _banner = const BannerList().obs;
+  BannerList get banner => _banner.value;
+
+  late final tabbarController = TabController(length: tabs.length, vsync: this);
+
+  /// tabs
+  final _tabs = [
+    TabsModel(name: LocaleKeys.selectedCollection, type: '1'),
+    TabsModel(name: LocaleKeys.firstCollection, type: '2'),
+  ].obs;
+  List<TabsModel> get tabs => _tabs.value;
+
+  /// 首发日历
+  final _firstCalendar = [].cast<Row>().obs;
+  List<Row> get firstCalendar => _firstCalendar.value;
+
+  bool calenderFinish = false;
+  int _calenderPage = 1;
+
+  /// 保存滚动状态
+  final pageStorageKey = const PageStorageKey(1);
+  final firstPageKey = const PageStorageKey(2);
+  final calenderPageKey = const PageStorageKey(3);
+  Future<void> init() async {
     final _ = await HomeServices.announcementList();
     LogUtil.w('获取home 数据 $_');
     if (_.code == 200) {
@@ -38,11 +86,26 @@ class HomeController extends GetxController {
         .toList();
     LogUtil.w(data);
     _posList.value = data.data!.copyWith(data: list);
+
+    var bannerData = await HomeServices.rotationChartSelectRotationChartList();
+    _banner.value = bannerData.data!;
+  }
+
+  /// 首发藏品加载
+  calenderOnLoad([int? page]) async {
+    final _ = await HomeServices.nftHomePageCalendar(page ?? _calenderPage);
+    _firstCalendar.value = _.data?.rows ?? [];
+    if ((_.data?.rows?.length ?? 0) < 20) {
+      calenderFinish = true;
+      return;
+    }
+    _calenderPage++;
   }
 
   @override
   void onInit() {
     init();
+    calenderOnLoad();
     super.onInit();
   }
 }

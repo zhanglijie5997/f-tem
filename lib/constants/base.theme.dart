@@ -41,4 +41,20 @@ class BaseTheme {
   /// 底部导航栏颜色
   static Color get bottomBarBgDark => '#252525'.color();
   static Color get bottomBarBgLight => '#252525'.color();
+
+  /// 标签颜色
+  static Color get tagBgDark => '#FFEAC0'.color();
+  static Color get tagBgLight => '#FFEAC0'.color();
+
+  /// 标签文字颜色
+  static Color get tagTextDark => '#353535'.color();
+  static Color get tagTextLight => '#353535'.color();
+
+  /// body颜色
+  static Color get defaultBgDark => '#151515'.color();
+  static Color get defaultBgLight => '#151515'.color();
+
+  /// 子标题颜色
+  static Color get subtitleDark => '#cccccc'.color();
+  static Color get subtitleLight => '#cccccc'.color();
 }

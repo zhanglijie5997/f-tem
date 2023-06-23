@@ -1,10 +1,9 @@
 class Assets {
   Assets._();
-
+  
   /// Assets for assetsImagesAnnouncement
   /// assets/images/announcement.png
-  static const String assetsImagesAnnouncement =
-      "assets/images/announcement.png";
+  static const String assetsImagesAnnouncement = "assets/images/announcement.png";
 
   /// Assets for assetsImagesChatBubule
   /// assets/images/chat_bubule.png
@@ -12,8 +11,7 @@ class Assets {
 
   /// Assets for assetsImagesCustomServices
   /// assets/images/custom_services.png
-  static const String assetsImagesCustomServices =
-      "assets/images/custom_services.png";
+  static const String assetsImagesCustomServices = "assets/images/custom_services.png";
 
   /// Assets for assetsImagesHome
   /// assets/images/home.png
@@ -29,12 +27,15 @@ class Assets {
 
   /// Assets for assetsImagesMarketSelect
   /// assets/images/market_select.png
-  static const String assetsImagesMarketSelect =
-      "assets/images/market_select.png";
+  static const String assetsImagesMarketSelect = "assets/images/market_select.png";
 
   /// Assets for assetsImagesMe
   /// assets/images/me.png
   static const String assetsImagesMe = "assets/images/me.png";
+
+  /// Assets for assetsImagesMeBg
+  /// assets/images/me_bg.png
+  static const String assetsImagesMeBg = "assets/images/me_bg.png";
 
   /// Assets for assetsImagesMeSelect
   /// assets/images/me_select.png
@@ -46,16 +47,23 @@ class Assets {
 
   /// Assets for assetsImagesMessageSelect
   /// assets/images/message_select.png
-  static const String assetsImagesMessageSelect =
-      "assets/images/message_select.png";
+  static const String assetsImagesMessageSelect = "assets/images/message_select.png";
 
   /// Assets for assetsImagesMoney
   /// assets/images/money.png
   static const String assetsImagesMoney = "assets/images/money.png";
 
+  /// Assets for assetsImagesMore
+  /// assets/images/more.png
+  static const String assetsImagesMore = "assets/images/more.png";
+
   /// Assets for assetsImagesNewUser
   /// assets/images/new_user.png
   static const String assetsImagesNewUser = "assets/images/new_user.png";
+
+  /// Assets for assetsImagesNoEmptyV3
+  /// assets/images/no_empty_v3.png
+  static const String assetsImagesNoEmptyV3 = "assets/images/no_empty_v3.png";
 
   /// Assets for assetsImagesShare
   /// assets/images/share.png

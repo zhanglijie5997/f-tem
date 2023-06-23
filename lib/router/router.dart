@@ -1,3 +1,4 @@
+import 'package:art_app/views/announcement_detail/binding/binding.dart';
 import 'package:art_app/views/home/binding/binding.dart';
 import 'package:art_app/views/login/binding/binding.dart';
 import 'package:art_app/views/login/login.dart';
@@ -12,6 +13,7 @@ import 'package:art_app/views/webview/binding/binding.dart';
 import 'package:art_app/views/webview/webview.dart';
 import 'package:get/get.dart';
 
+import '../views/announcement_detail/announcement_detail.dart';
 import '../views/scan/binding/binding.dart';
 
 final class RoutesName {
@@ -20,6 +22,7 @@ final class RoutesName {
   static String get scan => '/scan';
   static String get login => '/login';
   static String get unknow => '/unknow';
+  static String get announcementDetail => '/announcementDetail';
 }
 
 final class RoutePages {
@@ -46,5 +49,9 @@ final class RoutePages {
             name: RoutesName.login,
             page: () => const LoginView(),
             binding: LoginBinding()),
+        GetPage(
+            name: '${RoutesName.announcementDetail}/:id',
+            page: () => const AnnouncementDetailView(),
+            binding: AnnoouncementDetailBinding()),
       ];
 }

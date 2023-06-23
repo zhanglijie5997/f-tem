@@ -68,6 +68,9 @@ dependencies:
   open_file: ^3.3.2
   json_annotation: ^4.8.1
   json_serializable: ^6.7.0
+  extended_nested_scroll_view: ^6.1.1
+  pull_to_refresh_notification: ^3.0.1
+  flutter_widget_from_html_core: ^0.10.1
   # qq_badge: 
   #   path: ./plugin/QqBadge
   # flutter_openim_unimp:
@@ -113,10 +116,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Iconfont
+      fonts:
+        - asset: assets/font/iconfont.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

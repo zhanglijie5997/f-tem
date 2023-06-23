@@ -62,11 +62,11 @@ class HttpUtil {
         msg: '${ResponseModel.errorInternalRequest}: $message',
       );
 
-  static ResponseModel<T> _cancelledModel<T extends DataModel>(
-    String message,
-    String url,
-  ) =>
-      ResponseModel<T>.cancelled(msg: '$message, $url');
+  // static ResponseModel<T> _cancelledModel<T extends DataModel>(
+  //   String message,
+  //   String url,
+  // ) =>
+  //     ResponseModel<T>.cancelled(msg: '$message, $url');
 
   static Future<ResponseModel<T>> fetch<T>(
     FetchType fetchType, {
@@ -130,7 +130,6 @@ class HttpUtil {
             //     submittext: "去认证",
             //     only: false,
             //     submit: () {
-            //       // TODO: 去实名认证
             //       Get.toNamed(Routes.idAuth);
             //       BotToast.cleanAll();
             //     });
@@ -252,8 +251,8 @@ class HttpUtil {
         _openFile(filePath);
       }
       completer.complete(filePath);
-    } on DioError catch (e, s) {
-      if (e.type != DioErrorType.cancel) {
+    } on DioException catch (e, s) {
+      if (e.type != DioExceptionType.cancel) {
         completer.completeError(e, s);
       }
     } catch (e, s) {
@@ -494,7 +493,9 @@ class HttpUtil {
           handler.resolve(e.response!);
           return;
         }
-
+        // switch (e.type) {
+        //
+        // }
         if (e.type == DioExceptionType.badResponse) {
           // Alert.showConfirmDialog(I18n.accountKickOutTip, () {
           //   MeController.to.logout();
