@@ -5,10 +5,11 @@ import 'package:art_app/db/db.tools.dart';
 // import 'package:art_app/hook/notify_hook/notify_hook.dart';
 import 'package:art_app/services/services.dart';
 import 'package:art_app/utils/storage/storage.dart';
+import 'package:art_app/views/test/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-import 'hook/notify_hook/notify_hook.dart';
+import 'hook/notify/notify.hook.dart';
 
 void main() async {
   await StorageUtils.init();
@@ -40,4 +41,5 @@ void main() async {
   }
   // ThemeServiceController.to.updateStatusBar();
   runApp(App());
+  // runApp(Test1());
 }

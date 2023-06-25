@@ -32,18 +32,41 @@ import '../views/announcement_detail/announcement_detail.dart';
 import '../views/scan/binding/binding.dart';
 
 final class RoutesName {
+  /// 首页
   static String get root => '/';
   static String get webview => '/webview';
+
+  /// 扫码
   static String get scan => '/scan';
+
+  /// 登陆
   static String get login => '/login';
+
+  /// 未知页面
   static String get unknow => '/unknow';
+
+  /// 公告
   static String get announcementDetail => '/announcementDetail';
+
+  /// 分享
   static String get share => '/share';
+
+  /// 优惠券
   static String get coupon => '/coupon';
+
+  /// 关于我们
   static String get about => '/about';
+
+  /// 帮助中心
   static String get help => '/help';
+
+  /// 常规订单
   static String get purchaseOrder => '/purchaseOrder';
+
+  /// 转售订单
   static String get resaleOrder => '/resaleOrder';
+
+  /// 寄售订单
   static String get regularOrder => '/regularOrder';
 }
 
@@ -69,7 +92,7 @@ final class RoutePages {
             binding: ScanBinding()),
         GetPage(
             name: RoutesName.login,
-            page: () => const LoginView(),
+            page: () =>  LoginView(),
             binding: LoginBinding()),
         GetPage(
             name: '${RoutesName.announcementDetail}/:id',

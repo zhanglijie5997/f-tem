@@ -1,3 +1,0 @@
-class FlutterUse {
-  static getNotifyPower() {}
-}

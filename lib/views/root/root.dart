@@ -100,7 +100,7 @@ class RootView extends GetView<RootController> {
                                 ],
                               ),
                               Transform.translate(
-                                offset: const Offset(10, 0),
+                                offset: const Offset(15, 0),
                                 child: SizedBox(
                                   width: 20,
                                   height: 20,

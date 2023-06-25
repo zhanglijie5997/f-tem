@@ -1,4 +1,5 @@
-import 'package:art_app/hook/notify_hook/notify_hook.dart';
+import 'package:art_app/hook/notify/notify.hook.dart';
+import 'package:art_app/router/router.dart';
 import 'package:art_app/utils/storage/storage.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,14 @@ class GlobalServiceController extends GetxService {
   /// 用户token
   final _token = (StorageUtils.token).obs;
   String get token => _token.value;
+
+  toLogin(Function callback) {
+    if (token.isEmpty) {
+      Get.toNamed(RoutesName.login);
+    } else {
+      callback();
+    }
+  }
 
   @override
   void onInit() {
@@ -25,7 +34,6 @@ class GlobalServiceController extends GetxService {
     // AwesomeNotifications().actionStream.listen((ReceivedNotification receivedNotification) {
     //   LogUtil.w('收到推送 => ${receivedNotification.id}');
     // });
-
     super.onInit();
   }
   //   final _userMsg = (StorageUtils.userMsg).obs;

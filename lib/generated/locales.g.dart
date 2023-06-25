@@ -22,6 +22,13 @@ class LocaleKeys {
   static const part = 'part';
   static const creator = 'creator';
   static const announcementDetail = 'announcementDetail';
+  static const clickLogin = 'clickLogin';
+  static const userInformation = 'userInformation';
+  static const myWallet = 'myWallet';
+  static const search = 'search';
+  static const login = 'login';
+  static const register = 'register';
+  static const loginLookInformation = 'loginLookInformation';
 }
 
 class Locales {
@@ -37,6 +44,13 @@ class Locales {
     'part': '份',
     'creator': '创作者',
     'announcementDetail': '公告详情',
+    'clickLogin': '点击登陆/注册',
+    'userInformation': '个人资料',
+    'myWallet': '我的钱包',
+    'search': '搜索',
+    'login': '登陆',
+    'register': '注册',
+    'loginLookInformation': '登录查看藏品信息',
   };
   static const en_US = {
     'hello': 'hello',
@@ -50,5 +64,12 @@ class Locales {
     'part': 'Part',
     'creator': 'Creator',
     'announcementDetail': 'Announcement Detail',
+    'clickLogin': 'Click Login/Register',
+    'userInformation': 'User Information',
+    'myWallet': 'My Wallet',
+    'search': 'Search',
+    'login': 'Login',
+    'register': 'Register',
+    'loginLookInformation': 'Login to view collection information',
   };
 }

@@ -7,8 +7,8 @@ class MeController extends GetxController with GetTickerProviderStateMixin {
   static MeController get to => Get.find<MeController>();
 
   /// 刷新加载状态
-  final _loading = true.obs;
-  bool get loading => _loading.value;
+  final loadings = true.obs;
+  bool get loading => loadings.value;
 
   late final tabs = [
     TabsModel(name: '全部', type: '0', index: 0),
@@ -35,8 +35,10 @@ class MeController extends GetxController with GetTickerProviderStateMixin {
   }
 
   updateLoading(bool v) {
-    _loading.value = v;
+    loadings.value = v;
   }
+
+  /// 全部加载
 
   @override
   void onInit() {

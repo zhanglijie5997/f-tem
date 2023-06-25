@@ -34,12 +34,12 @@ class _CustomImageState extends State<CustomImage>
   @override
   Widget build(BuildContext context) {
     final String url = widget.url;
-    final size = widget.size ?? const Size(300, 200);
+    final size = widget.size;
     return ExtendedImage.network(
       url,
-      fit: BoxFit.cover,
-      width: size.width,
-      height: size.height,
+      fit: BoxFit.fitWidth,
+      width: size?.width ?? double.infinity,
+      height: size?.height ?? double.infinity,
       cache: true,
       loadStateChanged: (ExtendedImageState state) {
         switch (state.extendedImageLoadState) {

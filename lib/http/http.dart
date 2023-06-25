@@ -124,7 +124,8 @@ class HttpUtil {
         // ToastUtil.clear();
         _log('Response is not succeed: ${model.msg} ${model.code}');
         switch (model.code) {
-          case 2000:
+          case 401:
+            LogUtil.w('not login');
             // XDToast.confirm(
             //     content: "您还未实名认证，去认证？",
             //     submittext: "去认证",
@@ -489,13 +490,16 @@ class HttpUtil {
         handler.resolve(res);
       },
       onError: (DioException e, ErrorInterceptorHandler handler) async {
+        LogUtil.w(e);
         if (e.type == DioExceptionType.cancel) {
           handler.resolve(e.response!);
           return;
         }
-        // switch (e.type) {
-        //
-        // }
+        switch (e.response?.statusCode) {
+          case 401:
+            LogUtil.w('未登陆');
+            break;
+        }
         if (e.type == DioExceptionType.badResponse) {
           // Alert.showConfirmDialog(I18n.accountKickOutTip, () {
           //   MeController.to.logout();

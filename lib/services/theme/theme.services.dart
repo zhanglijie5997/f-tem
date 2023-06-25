@@ -57,9 +57,8 @@ class ThemeService extends GetxService {
 }
 
 class ThemeDataConfig {
-  static ThemeData get light => ThemeData.light(useMaterial3: true).copyWith(
+  static ThemeData get light => ThemeData.light(useMaterial3: false).copyWith(
       extensions: [CustomTheme.light()],
-      useMaterial3: false,
       appBarTheme:
           AppBarTheme(backgroundColor: BaseTheme.defaultBgLight, elevation: 0),
       splashFactory: NoSplashFactory(),
@@ -72,15 +71,19 @@ class ThemeDataConfig {
       dividerTheme: DividerThemeData(
         color: BaseTheme.bottomBarBgLight,
       ),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: BaseTheme.tagBgLight,
+        cursorColor: BaseTheme.selectBgLight,
+        selectionColor: BaseTheme.selectBgLight,
+      ),
       iconTheme: IconThemeData(size: 18, color: '#000000'.color()),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(
                   TextStyle(color: '#F2DFBB'.color())))));
 
-  static ThemeData get dark => ThemeData.dark(useMaterial3: true).copyWith(
+  static ThemeData get dark => ThemeData.dark(useMaterial3: false).copyWith(
       extensions: [CustomTheme.dark()],
-      useMaterial3: false,
       appBarTheme:
           AppBarTheme(backgroundColor: BaseTheme.defaultBgDark, elevation: 0),
       scaffoldBackgroundColor: BaseTheme.defaultBgDark,
@@ -92,6 +95,11 @@ class ThemeDataConfig {
       dividerColor: BaseTheme.bottomBarBgDark,
       dividerTheme: DividerThemeData(
         color: BaseTheme.bottomBarBgDark,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: BaseTheme.tagBgLight,
+        cursorColor: BaseTheme.selectBgLight,
+        selectionColor: BaseTheme.selectBgLight,
       ),
       iconTheme: IconThemeData(size: 18, color: '#ffffff'.color()),
       textButtonTheme: TextButtonThemeData(

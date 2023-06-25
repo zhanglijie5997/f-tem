@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:art_app/hook/notify_hook/notify_hook.dart';
+import 'package:art_app/hook/notify/notify.hook.dart';
 
 class PlaybackTimer {
   final Duration _clockTic = const Duration(seconds: 1);

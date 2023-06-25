@@ -9,5 +9,12 @@
   "release": "Release",
   "part": "Part",
   "creator": "Creator",
-  "announcementDetail": "Announcement Detail"
+  "announcementDetail": "Announcement Detail",
+  "clickLogin": "Click Login/Register",
+  "userInformation": "User Information",
+  "myWallet": "My Wallet",
+  "search": "Search",
+  "login": "Login",
+  "register": "Register",
+  "loginLookInformation": "Login to view collection information"
 }

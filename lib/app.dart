@@ -12,7 +12,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:screenshot_callback/screenshot_callback.dart';
 import 'dart:ui' as ui;
 import 'generated/locales.g.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class App extends StatelessWidget {
   App({super.key});
@@ -76,46 +75,39 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LogUtil.w('reset');
     return RepaintBoundary(
       key: globalkey,
-      child: ScreenUtilInit(
-        designSize: const Size(375, 1842),
-        useInheritedMediaQuery: true,
-        minTextAdapt: false,
-        splitScreenMode: true,
-        builder: (c, i) => GetMaterialApp(
-          getPages: RoutePages.page,
-          initialRoute: RoutesName.root,
-          unknownRoute: RoutePages.unknowPage,
-          locale: LanguageService.to.language,
-          fallbackLocale: const Locale('en', 'US'),
-          supportedLocales: const [
-            Locale('en', 'US'), // English, no country code
-            Locale('es', ''), // Spanish, no country code
-            Locale('zh', 'CN'), // Chinese, no country code
-          ],
-          localizationsDelegates: const [
-            // AppLocalizations.delegate, // Add this line
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          builder: FlutterSmartDialog.init(builder: (context, child) {
-            _buildAnnotatedRegion(context, child!);
-            _buildBottomPaddingVerticalShield(context);
-            _screenShotListener(context);
-            return _buildFontSize(context, child);
-          }),
-          navigatorObservers: [
-            GetXRouterObserver(),
-            FlutterSmartDialog.observer
-          ],
-          translationsKeys: AppTranslation.translations,
-          initialBinding: BindingsBuilder(() {}),
-          theme: ThemeDataConfig.light,
-          darkTheme: ThemeDataConfig.dark,
-          themeMode: ThemeService.to.themeModel,
-        ),
+      child: GetMaterialApp(
+        getPages: RoutePages.page,
+        initialRoute: RoutesName.root,
+        unknownRoute: RoutePages.unknowPage,
+        locale: LanguageService.to.language,
+        fallbackLocale: const Locale('en', 'US'),
+        supportedLocales: const [
+          Locale('en', 'US'), // English, no country code
+          Locale('es', ''), // Spanish, no country code
+          Locale('zh', 'CN'), // Chinese, no country code
+        ],
+        localizationsDelegates: const [
+          // AppLocalizations.delegate, // Add this line
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        builder: FlutterSmartDialog.init(builder: (context, child) {
+          _buildAnnotatedRegion(context, child!);
+          _buildBottomPaddingVerticalShield(context);
+          _screenShotListener(context);
+          return _buildFontSize(context, child);
+        }),
+        navigatorObservers: [GetXRouterObserver(), FlutterSmartDialog.observer],
+        // home: Test1(),
+        translationsKeys: AppTranslation.translations,
+        initialBinding: BindingsBuilder(() {}),
+        theme: ThemeDataConfig.light,
+        darkTheme: ThemeDataConfig.dark,
+        themeMode: ThemeService.to.themeModel,
       ),
     );
   }

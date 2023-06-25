@@ -858,7 +858,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/Core/Libs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jiyun.yanjie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiyun.yanjie12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
