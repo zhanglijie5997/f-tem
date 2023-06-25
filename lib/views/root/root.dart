@@ -4,6 +4,7 @@ import 'package:art_app/router/router.dart';
 // import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/root/controller/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../components/custom_badge/custom_badge.dart';
@@ -14,6 +15,40 @@ class RootView extends GetView<RootController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: controller.key,
+      drawer: Container(
+        height: double.infinity,
+        width: 190,
+        color: context.theme.scaffoldBackgroundColor,
+        child: ListView.builder(
+            physics: const ClampingScrollPhysics(),
+            itemCount: controller.orderList.length,
+            itemBuilder: (c, i) {
+              final tem = controller.orderList[i];
+              return Padding(
+                padding: const EdgeInsets.only(top: 40, left: 24),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: Image.asset(tem.icon ?? ''),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        tem.name ?? '',
+                        style: context.textTheme.bodyMedium
+                            ?.copyWith(fontSize: 14),
+                      ),
+                    )
+                  ],
+                ),
+              ).onTap(() {
+                Get.toNamed(tem.page ?? '');
+              });
+            }),
+      ),
       body: PageView(
         controller: controller.pageController,
         physics: const NeverScrollableScrollPhysics(),
@@ -45,16 +80,18 @@ class RootView extends GetView<RootController> {
                               Column(
                                 children: [
                                   SizedBox(
-                                      width: 20,
-                                      height: 20,
+                                      width: 24,
+                                      height: 24,
                                       child: Image.asset(
-                                          controller.active == e.index
-                                              ? e.selectImg
-                                              : e.img)),
+                                        controller.active == e.index
+                                            ? e.selectImg
+                                            : e.img,
+                                        fit: BoxFit.cover,
+                                      )),
                                   Text(e.name.tr,
                                       style: context.textTheme.bodyMedium
                                           ?.copyWith(
-                                              fontSize: 12,
+                                              fontSize: 10,
                                               color: controller.active ==
                                                       e.index
                                                   ? context.customTheme?.success

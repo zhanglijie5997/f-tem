@@ -1,9 +1,14 @@
 import 'package:art_app/hook/notify_hook/notify_hook.dart';
+import 'package:art_app/utils/storage/storage.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
 
 class GlobalServiceController extends GetxService {
   static GlobalServiceController get to => Get.find<GlobalServiceController>();
+
+  /// 用户token
+  final _token = (StorageUtils.token).obs;
+  String get token => _token.value;
 
   @override
   void onInit() {

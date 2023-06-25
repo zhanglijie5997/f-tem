@@ -49,6 +49,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.7.5-dev.3"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: "6e7f3ec561ec08f47f912cfe349d4a1707afdc8dda271e17b046aa6d42c89e77"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.1.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -451,6 +459,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.5"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      sha256: "1b61f8c4cbf965104b6ca7160880ff1af6755aad7fec70b58444245132453745"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.8.4"
   flutter_smart_dialog:
     dependency: "direct main"
     description:

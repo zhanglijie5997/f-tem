@@ -1,9 +1,10 @@
 class Assets {
   Assets._();
-  
+
   /// Assets for assetsImagesAnnouncement
   /// assets/images/announcement.png
-  static const String assetsImagesAnnouncement = "assets/images/announcement.png";
+  static const String assetsImagesAnnouncement =
+      "assets/images/announcement.png";
 
   /// Assets for assetsImagesChatBubule
   /// assets/images/chat_bubule.png
@@ -11,7 +12,8 @@ class Assets {
 
   /// Assets for assetsImagesCustomServices
   /// assets/images/custom_services.png
-  static const String assetsImagesCustomServices = "assets/images/custom_services.png";
+  static const String assetsImagesCustomServices =
+      "assets/images/custom_services.png";
 
   /// Assets for assetsImagesHome
   /// assets/images/home.png
@@ -21,13 +23,59 @@ class Assets {
   /// assets/images/home_select.png
   static const String assetsImagesHomeSelect = "assets/images/home_select.png";
 
+  /// Assets for assetsImagesIconIconAbout
+  /// assets/images/icon/icon_about.png
+  static const String assetsImagesIconIconAbout =
+      "assets/images/icon/icon_about.png";
+
+  /// Assets for assetsImagesIconIconAskBuy
+  /// assets/images/icon/icon_ask_buy.png
+  static const String assetsImagesIconIconAskBuy =
+      "assets/images/icon/icon_ask_buy.png";
+
+  /// Assets for assetsImagesIconIconCash
+  /// assets/images/icon/icon_cash.png
+  static const String assetsImagesIconIconCash =
+      "assets/images/icon/icon_cash.png";
+
+  /// Assets for assetsImagesIconIconCoupon
+  /// assets/images/icon/icon_coupon.png
+  static const String assetsImagesIconIconCoupon =
+      "assets/images/icon/icon_coupon.png";
+
+  /// Assets for assetsImagesIconIconCustomService
+  /// assets/images/icon/icon_custom_service.png
+  static const String assetsImagesIconIconCustomService =
+      "assets/images/icon/icon_custom_service.png";
+
+  /// Assets for assetsImagesIconIconExchange
+  /// assets/images/icon/icon_exchange.png
+  static const String assetsImagesIconIconExchange =
+      "assets/images/icon/icon_exchange.png";
+
+  /// Assets for assetsImagesIconIconHelp
+  /// assets/images/icon/icon_help.png
+  static const String assetsImagesIconIconHelp =
+      "assets/images/icon/icon_help.png";
+
+  /// Assets for assetsImagesIconIconOrder
+  /// assets/images/icon/icon_order.png
+  static const String assetsImagesIconIconOrder =
+      "assets/images/icon/icon_order.png";
+
+  /// Assets for assetsImagesIconIconShare
+  /// assets/images/icon/icon_share.png
+  static const String assetsImagesIconIconShare =
+      "assets/images/icon/icon_share.png";
+
   /// Assets for assetsImagesMarket
   /// assets/images/market.png
   static const String assetsImagesMarket = "assets/images/market.png";
 
   /// Assets for assetsImagesMarketSelect
   /// assets/images/market_select.png
-  static const String assetsImagesMarketSelect = "assets/images/market_select.png";
+  static const String assetsImagesMarketSelect =
+      "assets/images/market_select.png";
 
   /// Assets for assetsImagesMe
   /// assets/images/me.png
@@ -47,7 +95,8 @@ class Assets {
 
   /// Assets for assetsImagesMessageSelect
   /// assets/images/message_select.png
-  static const String assetsImagesMessageSelect = "assets/images/message_select.png";
+  static const String assetsImagesMessageSelect =
+      "assets/images/message_select.png";
 
   /// Assets for assetsImagesMoney
   /// assets/images/money.png
@@ -65,6 +114,10 @@ class Assets {
   /// assets/images/no_empty_v3.png
   static const String assetsImagesNoEmptyV3 = "assets/images/no_empty_v3.png";
 
+  /// Assets for assetsImagesOpenCashBg
+  /// assets/images/open_cash_bg.png
+  static const String assetsImagesOpenCashBg = "assets/images/open_cash_bg.png";
+
   /// Assets for assetsImagesShare
   /// assets/images/share.png
   static const String assetsImagesShare = "assets/images/share.png";
@@ -72,16 +125,4 @@ class Assets {
   /// Assets for assetsImagesSynthesis
   /// assets/images/synthesis.png
   static const String assetsImagesSynthesis = "assets/images/synthesis.png";
-
-  /// Assets for assetsJsonTheme
-  /// assets/json/theme.json
-  static const String assetsJsonTheme = "assets/json/theme.json";
-
-  /// Assets for assetsLanguageEnUS
-  /// assets/language/en_US.json
-  static const String assetsLanguageEnUS = "assets/language/en_US.json";
-
-  /// Assets for assetsLanguageZhCN
-  /// assets/language/zh_CN.json
-  static const String assetsLanguageZhCN = "assets/language/zh_CN.json";
 }

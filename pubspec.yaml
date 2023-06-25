@@ -71,6 +71,8 @@ dependencies:
   extended_nested_scroll_view: ^6.1.1
   pull_to_refresh_notification: ^3.0.1
   flutter_widget_from_html_core: ^0.10.1
+  badges: ^3.1.1
+  flutter_screenutil: ^5.8.4
   # qq_badge: 
   #   path: ./plugin/QqBadge
   # flutter_openim_unimp:
@@ -104,6 +106,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/icon/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -117,9 +120,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Iconfont
+    - family: iconfont
       fonts:
-        - asset: assets/font/iconfont.ttf
+        - asset: assets/fonts/iconfont.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -131,6 +134,6 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_assets:
-  assets_path: assets/
+  assets_path: assets/images/
   output_path: lib/constants/
   filename: assets.dart

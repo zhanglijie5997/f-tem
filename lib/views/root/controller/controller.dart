@@ -1,5 +1,6 @@
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/generated/locales.g.dart';
+import 'package:art_app/router/router.dart';
 import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/home/home.dart';
 import 'package:art_app/views/market/market.dart';
@@ -48,6 +49,34 @@ class BottomItemModel {
   }
 }
 
+class DrawModel {
+  int? type;
+  String? page;
+  int? count;
+  String? name;
+  String? icon;
+
+  DrawModel({this.type, this.page, this.count, this.name, this.icon});
+
+  DrawModel.fromJson(Map<String, dynamic> json) {
+    type = json['type'];
+    page = json['page'];
+    count = json['count'];
+    name = json['name'];
+    icon = json['icon'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['type'] = type;
+    data['page'] = page;
+    data['count'] = count;
+    data['name'] = name;
+    data['icon'] = icon;
+    return data;
+  }
+}
+
 class RootController extends GetxController {
   static RootController get to => Get.find<RootController>();
   final list = [
@@ -92,6 +121,62 @@ class RootController extends GetxController {
   screenShotListener() {
     LogUtil.w('用户使用系统截屏');
   }
+
+  /// draw key
+  final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
+  openDraw() {
+    key.currentState?.openDrawer();
+  }
+
+  /// 订单列表
+  final _orderList = [
+    DrawModel(
+        type: 0,
+        name: '常规订单',
+        icon: Assets.assetsImagesIconIconOrder,
+        page: RoutesName.regularOrder,
+        count: 0),
+    DrawModel(
+        type: 1,
+        name: '求购订单',
+        icon: Assets.assetsImagesIconIconAskBuy,
+        page: RoutesName.purchaseOrder,
+        count: 0),
+    DrawModel(
+        type: 2,
+        name: '转售订单',
+        icon: Assets.assetsImagesIconIconExchange,
+        page: RoutesName.resaleOrder,
+        count: 0),
+    DrawModel(
+        type: 3,
+        name: '我的卡券',
+        icon: Assets.assetsImagesIconIconCoupon,
+        page: RoutesName.coupon,
+        count: 0),
+    DrawModel(
+        type: 4,
+        name: '分享衍界',
+        icon: Assets.assetsImagesIconIconShare,
+        page: RoutesName.share,
+        count: 0),
+    DrawModel(
+        type: 5,
+        name: '帮助中心',
+        icon: Assets.assetsImagesIconIconHelp,
+        page: RoutesName.help,
+        count: 0),
+    DrawModel(
+        type: 6,
+        name: '关于衍界',
+        icon: Assets.assetsImagesIconIconAbout,
+        page: RoutesName.about,
+        count: 0),
+  ].obs;
+
+  // ignore: invalid_use_of_protected_member
+  List<DrawModel> get orderList => _orderList.value;
 
   cleanBadge() {
     LogUtil.w('清除badge');

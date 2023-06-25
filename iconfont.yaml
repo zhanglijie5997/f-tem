@@ -1,0 +1,5 @@
+- icons: 
+    - css: //at.alicdn.com/t/c/font_3838133_gmxnuqerc9m.css
+      dir: fonts
+  in: assets/
+  out: lib/constants/

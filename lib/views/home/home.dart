@@ -8,6 +8,7 @@ import 'package:art_app/views/home/components/first_collection.dart';
 import 'package:art_app/views/home/controller/controller.dart';
 // import 'package:art_app/generated/locales.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:get/get.dart';
@@ -95,7 +96,11 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin {
                                               '',
                                           fit: BoxFit.contain,
                                         ))),
-                                Text(controller.posList.data?[i].name ?? '')
+                                Text(
+                                  controller.posList.data?[i].name ?? '',
+                                  style: context.textTheme.bodyMedium
+                                      ?.copyWith(fontSize: 13),
+                                )
                               ],
                             ),
                           ),
@@ -142,7 +147,7 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin {
                                               constraints: const BoxConstraints(
                                                 maxWidth: 120,
                                                 minHeight: 78,
-                                                maxHeight: 140,
+                                                maxHeight: 190,
                                                 minWidth: 120,
                                               ),
                                               child: ClipRRect(
@@ -175,9 +180,17 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin {
                                                                     .rows?[i]
                                                                     .title ??
                                                                 '',
+                                                            style: context
+                                                                .textTheme
+                                                                .bodyMedium
+                                                                ?.copyWith(
+                                                                    fontSize:
+                                                                        12),
                                                             overflow:
                                                                 TextOverflow
                                                                     .ellipsis,
+                                                            textAlign:
+                                                                TextAlign.left,
                                                             maxLines: 1,
                                                           ))
                                                     ],
@@ -213,43 +226,53 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin {
               children: [
                 SizedBox(
                   width: 200,
-                  child: TabBar(
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 0),
-                      labelStyle: context.textTheme.bodyLarge?.copyWith(),
-                      indicatorWeight: 3,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      indicatorPadding:
-                          const EdgeInsets.symmetric(horizontal: 15),
-                      indicator: BoxDecoration(
-                          // borderRadius: 3.radius,
-                          border: const Border(
-                            bottom: BorderSide(
-                                width: 10, color: Colors.transparent),
-                          ),
-                          gradient: LinearGradient(
-                              tileMode: TileMode.repeated,
-                              colors: [
-                                '#E9BF84'.color(),
-                                '#FFF1E3'.color().withAlpha(0)
-                              ])),
-                      dividerColor: Colors.transparent,
-                      controller: controller.tabbarController,
-                      tabs: controller.tabs
-                          .map((e) => UnconstrainedBox(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: 100,
-                                  color: context.theme.scaffoldBackgroundColor,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(e.name?.tr ?? '',
-                                      style:
-                                          context.textTheme.bodyLarge?.copyWith(
-                                              // fontSize:
-                                              )),
-                                ),
-                              ))
-                          .toList()),
+                  child: Obx(
+                    () => TabBar(
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 0),
+                        labelStyle: context.textTheme.bodyLarge?.copyWith(),
+                        indicatorWeight: 3,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        unselectedLabelStyle: context.textTheme.bodyLarge
+                            ?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.w400),
+                        indicatorPadding:
+                            const EdgeInsets.symmetric(horizontal: 15),
+                        indicator: BoxDecoration(
+                            // borderRadius: 3.radius,
+                            border: const Border(
+                              bottom: BorderSide(
+                                  width: 10, color: Colors.transparent),
+                            ),
+                            gradient: LinearGradient(
+                                tileMode: TileMode.repeated,
+                                colors: [
+                                  '#E9BF84'.color(),
+                                  '#FFF1E3'.color().withAlpha(0)
+                                ])),
+                        dividerColor: Colors.transparent,
+                        controller: controller.tabbarController,
+                        tabs: controller.tabs
+                            .map((e) => UnconstrainedBox(
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: 100,
+                                    color:
+                                        context.theme.scaffoldBackgroundColor,
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                    child: Text(e.name?.tr ?? '',
+                                        style: context.textTheme.bodyLarge
+                                            ?.copyWith(
+                                                fontSize: 16,
+                                                fontWeight:
+                                                    controller.selectIndex ==
+                                                            e.index
+                                                        ? FontWeight.bold
+                                                        : FontWeight.w400)),
+                                  ),
+                                ))
+                            .toList()),
+                  ),
                 ),
                 Expanded(
                   child: TabBarView(

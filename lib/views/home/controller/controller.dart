@@ -14,17 +14,19 @@ import 'package:get/get.dart';
 class TabsModel {
   String? name;
   String? type;
-
-  TabsModel({this.name, this.type});
+  int? index;
+  TabsModel({this.name, this.type, this.index});
 
   TabsModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     type = json['type'];
+    index = json['index'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
+    data['index'] = index;
     data['type'] = type;
     return data;
   }
@@ -57,8 +59,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
   /// tabs
   final _tabs = [
-    TabsModel(name: LocaleKeys.selectedCollection, type: '1'),
-    TabsModel(name: LocaleKeys.firstCollection, type: '2'),
+    TabsModel(name: LocaleKeys.selectedCollection, type: '1', index: 0),
+    TabsModel(name: LocaleKeys.firstCollection, type: '2', index: 1),
   ].obs;
   List<TabsModel> get tabs => _tabs.value;
 
@@ -73,7 +75,17 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   final pageStorageKey = const PageStorageKey(1);
   final firstPageKey = const PageStorageKey(2);
   final calenderPageKey = const PageStorageKey(3);
+
+  // tabbar 选择
+  final _selectIndex = 0.obs;
+  int get selectIndex => _selectIndex.value;
+
+  void listener() {
+    _selectIndex.value = tabbarController.index;
+  }
+
   Future<void> init() async {
+    tabbarController.addListener(listener);
     final _ = await HomeServices.announcementList();
     LogUtil.w('获取home 数据 $_');
     if (_.code == 200) {

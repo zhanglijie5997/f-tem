@@ -59,9 +59,9 @@ class ThemeService extends GetxService {
 class ThemeDataConfig {
   static ThemeData get light => ThemeData.light(useMaterial3: true).copyWith(
       extensions: [CustomTheme.light()],
-      appBarTheme: AppBarTheme(
-        backgroundColor: BaseTheme.defaultBgLight,
-      ),
+      useMaterial3: false,
+      appBarTheme:
+          AppBarTheme(backgroundColor: BaseTheme.defaultBgLight, elevation: 0),
       splashFactory: NoSplashFactory(),
       scaffoldBackgroundColor: BaseTheme.defaultBgLight,
       textTheme: const TextTheme(
@@ -72,6 +72,7 @@ class ThemeDataConfig {
       dividerTheme: DividerThemeData(
         color: BaseTheme.bottomBarBgLight,
       ),
+      iconTheme: IconThemeData(size: 18, color: '#000000'.color()),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(
@@ -79,9 +80,9 @@ class ThemeDataConfig {
 
   static ThemeData get dark => ThemeData.dark(useMaterial3: true).copyWith(
       extensions: [CustomTheme.dark()],
-      appBarTheme: AppBarTheme(
-        backgroundColor: BaseTheme.defaultBgDark,
-      ),
+      useMaterial3: false,
+      appBarTheme:
+          AppBarTheme(backgroundColor: BaseTheme.defaultBgDark, elevation: 0),
       scaffoldBackgroundColor: BaseTheme.defaultBgDark,
       splashFactory: NoSplashFactory(),
       textTheme: const TextTheme(
@@ -92,6 +93,7 @@ class ThemeDataConfig {
       dividerTheme: DividerThemeData(
         color: BaseTheme.bottomBarBgDark,
       ),
+      iconTheme: IconThemeData(size: 18, color: '#ffffff'.color()),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(
@@ -114,6 +116,7 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   Color? tagBg;
   Color? tagText;
   Color? subtitle;
+  TextStyle? body18;
   CustomTheme(
       {this.success,
       this.bottomBar,
@@ -127,7 +130,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       this.selectBg,
       this.tagBg,
       this.tagText,
-      this.subtitle});
+      this.subtitle,
+      this.body18});
   @override
   CustomTheme copyWith(
       {Color? success,
@@ -142,7 +146,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       Color? selectBg,
       Color? tagBg,
       Color? tagText,
-      Color? subtitle}) {
+      Color? subtitle,
+      TextStyle? body18}) {
     return CustomTheme(
         success: success,
         bottomBar: bottomBar,
@@ -156,7 +161,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
         selectBg: selectBg,
         tagBg: tagBg,
         tagText: tagText,
-        subtitle: subtitle);
+        subtitle: subtitle,
+        body18: body18);
   }
 
   @override
@@ -177,7 +183,8 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       selectBg: BaseTheme.selectBgLight,
       tagBg: BaseTheme.tagBgLight,
       tagText: BaseTheme.tagTextLight,
-      subtitle: BaseTheme.subtitleLight);
+      subtitle: BaseTheme.subtitleLight,
+      body18: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600));
 
   static CustomTheme dark() => CustomTheme(
       success: BaseTheme.successDark,
@@ -192,5 +199,6 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       selectBg: BaseTheme.selectBgDark,
       tagBg: BaseTheme.tagBgDark,
       tagText: BaseTheme.tagTextDark,
-      subtitle: BaseTheme.subtitleDark);
+      subtitle: BaseTheme.subtitleDark,
+      body18: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600));
 }
