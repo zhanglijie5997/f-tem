@@ -30,12 +30,19 @@ class MeController extends GetxController with GetTickerProviderStateMixin {
     _opacity.value = (scrollController.position.maxScrollExtent -
             scrollController.position.pixels) /
         scrollController.position.maxScrollExtent;
-    LogUtil.w(
-        '${scrollController.position.maxScrollExtent} opacity: ${_opacity.value}');
+    // LogUtil.w(
+    //     '${scrollController.position.maxScrollExtent} opacity: ${_opacity.value}');
   }
 
   updateLoading(bool v) {
     loadings.value = v;
+  }
+
+  String nftAddress(String v) {
+    if (v.isEmpty) {
+      return '';
+    }
+    return '${v.substring(0, 6)}****${v.substring(v.length - 4, v.length)}';
   }
 
   /// 全部加载

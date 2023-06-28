@@ -7,6 +7,7 @@ import 'package:art_app/models/models.dart';
 import 'package:art_app/utils/storage/storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -134,6 +135,9 @@ class HttpUtil {
             //       Get.toNamed(Routes.idAuth);
             //       BotToast.cleanAll();
             //     });
+            break;
+          case 502:
+            SmartDialog.showToast('服务器错误');
             break;
           default:
             // if (toastError && response.statusCode != ErrCode.CODE_KICK_OUT) {

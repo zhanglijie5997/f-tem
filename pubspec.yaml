@@ -74,11 +74,12 @@ dependencies:
   flutter_widget_from_html_core: ^0.10.1
   badges: ^3.1.1
   flutter_screenutil: ^5.8.4
+  flutter_ali_auth: ^0.6.2
+  loading_more_list: ^5.0.3
   # qq_badge: 
   #   path: ./plugin/QqBadge
   # flutter_openim_unimp:
-  #   git:
-  #     url: https://github.com/hrxiang/flutter_openim_unimp.git
+  #   path: ./plugins/flutter_openim_unimp
       # ref: 3.6.18^0
 dev_dependencies:
   floor_generator: ^1.4.2

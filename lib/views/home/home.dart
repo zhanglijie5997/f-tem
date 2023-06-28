@@ -3,7 +3,7 @@ import 'package:art_app/components/custom_refresh/custom_refresh.dart';
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/router/router.dart';
-import 'package:art_app/views/home/components/calender_collection.dart';
+import 'package:art_app/views/home/components/winnow_collection.dart';
 import 'package:art_app/views/home/components/first_collection.dart';
 import 'package:art_app/views/home/controller/controller.dart';
 // import 'package:art_app/generated/locales.g.dart';
@@ -274,15 +274,19 @@ class _HomeView extends State<HomeView> with AutomaticKeepAliveClientMixin {
                             .toList()),
                   ),
                 ),
-                Expanded(
-                  child: TabBarView(
-                      key: controller.pageStorageKey,
-                      controller: controller.tabbarController,
-                      children: const [
-                        CalenderCollectionComponent(),
-                        FirstCollectionComponent()
-                      ]),
-                )
+                Obx(() {
+                  return Expanded(
+                    child: TabBarView(
+                        key: controller.pageStorageKey,
+                        controller: controller.tabbarController,
+                        children: [
+                          WinnowCollectionComponent(
+                            loading: controller.loading,
+                          ),
+                          FirstCollectionComponent(loading: controller.loading)
+                        ]),
+                  );
+                })
               ],
             ),
           )),

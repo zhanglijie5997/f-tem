@@ -1,6 +1,8 @@
+import 'package:art_app/components/custom_ali_login/custom_ali_login.dart';
 import 'package:art_app/constants/assets.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/generated/locales.g.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +15,6 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBody: true,
@@ -24,6 +25,8 @@ class LoginView extends StatelessWidget {
           margin: const EdgeInsets.only(top: 73),
           width: context.mediaQuerySize.width,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// 顶部切换
               Row(
@@ -124,7 +127,7 @@ class LoginView extends StatelessWidget {
                     // color: Colors.red,
                     color: context.customTheme?.bottomBar,
                     borderRadius: 27.radius),
-                margin: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -137,6 +140,7 @@ class LoginView extends StatelessWidget {
                         child: TextSelectionTheme(
                           data: context.theme.textSelectionTheme,
                           child: TextField(
+                            focusNode: controller.phoneFocusNode,
                             keyboardType: TextInputType.phone,
                             showCursor: true,
                             maxLength: 11,
@@ -144,7 +148,10 @@ class LoginView extends StatelessWidget {
                             // cursorColor: Colors.red,
                             controller: controller.phoneController,
                             decoration: const InputDecoration(
-                                border: InputBorder.none, hintText: '请输入手机号', counterText: ''),
+                              border: InputBorder.none,
+                              hintText: '请输入手机号',
+                              counterText: '',
+                            ),
                           ),
                         ),
                       ),
@@ -152,6 +159,24 @@ class LoginView extends StatelessWidget {
                   ],
                 ),
               ),
+              // Obx(() => Text('${controller.phoneFocusStatus}')),
+              Obx(() => Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  width: double.infinity,
+                  height: 40,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0, left: 50),
+                    child: Text(
+                      !controller.phoneFocusStatus
+                          ? ''
+                          : controller.validatePhone()
+                              ? ''
+                              : '请输入正确手机号',
+                      textAlign: TextAlign.left,
+                      style: context.textTheme.bodyMedium
+                          ?.copyWith(color: context.customTheme?.money),
+                    ),
+                  ))),
               // 密码
               Container(
                 width: context.mediaQuerySize.width * .92,
@@ -180,7 +205,9 @@ class LoginView extends StatelessWidget {
                             // cursorColor: Colors.red,
                             controller: controller.codeController,
                             decoration: const InputDecoration(
-                                border: InputBorder.none, hintText: '请输入验证码', counterText: ''),
+                                border: InputBorder.none,
+                                hintText: '请输入验证码',
+                                counterText: ''),
                           ),
                         ),
                       ),
@@ -251,23 +278,43 @@ class LoginView extends StatelessWidget {
                       : const SizedBox())),
 
               Obx(
-                  () => Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 30),
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(vertical: 17),
-                    decoration: BoxDecoration(
-                        color: controller.validate ? Colors.transparent : context.customTheme?.btnDisabled,
-                        borderRadius: 27.radius, gradient: controller.validate ? LinearGradient(
-                        tileMode: TileMode.repeated,
-                        colors: [
-                          '#E9BF84'.color(),
-                          '#FFF1E3'.color().withAlpha(0)
-                        ]) : null),
-                    child: Text(
-                      LocaleKeys.login.tr,
-                      style: context.textTheme.bodyLarge,
-                    )),
+                () => Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 30),
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(vertical: 17),
+                        decoration: BoxDecoration(
+                            color: controller.loading
+                                ? context.customTheme?.btnDisabled
+                                : (controller.validatePhone() &&
+                                        controller.code.length == 6
+                                    ? null
+                                    : context.customTheme?.btnDisabled),
+                            borderRadius: 27.radius,
+                            gradient: controller.loading
+                                ? null
+                                : controller.validatePhone() &&
+                                        controller.code.length == 6
+                                    ? LinearGradient(
+                                        tileMode: TileMode.repeated,
+                                        colors: [
+                                            '#FFF1E3'.color(),
+                                            '#E9BF84'.color(),
+                                          ])
+                                    : null),
+                        child: controller.loading
+                            ? const SizedBox(
+                                height: 22,
+                                child: CupertinoActivityIndicator(
+                                  color: Colors.black,
+                                ))
+                            : Text(
+                                LocaleKeys.login.tr,
+                                style: context.textTheme.bodyLarge?.copyWith(
+                                    color: context.customTheme?.btnSuccess,
+                                    fontWeight: FontWeight.bold),
+                              ))
+                    .onTap(controller.submit),
               ),
 
               Padding(
@@ -311,7 +358,7 @@ class LoginView extends StatelessWidget {
             ],
           ),
         )).onTap(() {
-          FocusScope.of(context).unfocus();
+      FocusScope.of(context).requestFocus(FocusNode());
     });
   }
 }

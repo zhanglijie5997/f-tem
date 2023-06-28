@@ -10,6 +10,7 @@ import 'package:art_app/utils/log/log.utils.dart';
 import 'package:art_app/views/home/services/services.dart';
 import 'package:flutter/material.dart' hide Row;
 import 'package:get/get.dart';
+import 'package:loading_more_list/loading_more_list.dart';
 
 class TabsModel {
   String? name;
@@ -68,9 +69,6 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   final _firstCalendar = [].cast<Row>().obs;
   List<Row> get firstCalendar => _firstCalendar.value;
 
-  bool calenderFinish = false;
-  int _calenderPage = 1;
-
   /// 保存滚动状态
   final pageStorageKey = const PageStorageKey(1);
   final firstPageKey = const PageStorageKey(2);
@@ -84,15 +82,23 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     _selectIndex.value = tabbarController.index;
   }
 
+  /// 刷新中状态
+  final _loading = false.obs;
+  bool get loading => _loading.value;
+  updateLoading(bool v) {
+    _loading.value = v;
+  }
+
   Future<void> init() async {
+    _loading.value = true;
     tabbarController.addListener(listener);
     final _ = await HomeServices.announcementList();
     LogUtil.w('获取home 数据 $_');
     if (_.code == 200) {
       _announcementList.value = _.data!;
     }
-
     var data = await HomeServices.homePositionSelectNftHomePositionList();
+    _loading.value = false;
     final list = data.data?.data
         ?.map((e) => e.copyWith(logoImg: logo[e.sortChart]))
         .toList();
@@ -103,21 +109,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     _banner.value = bannerData.data!;
   }
 
-  /// 首发藏品加载
-  calenderOnLoad([int? page]) async {
-    final _ = await HomeServices.nftHomePageCalendar(page ?? _calenderPage);
-    _firstCalendar.value = _.data?.rows ?? [];
-    if ((_.data?.rows?.length ?? 0) < 20) {
-      calenderFinish = true;
-      return;
-    }
-    _calenderPage++;
-  }
-
   @override
   void onInit() {
     init();
-    calenderOnLoad();
     super.onInit();
   }
 }

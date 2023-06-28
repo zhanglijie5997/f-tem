@@ -2,31 +2,70 @@ import 'package:art_app/components/custom_img/custom_img.dart';
 import 'package:art_app/components/custom_load_more/custom_load_more.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/generated/locales.g.dart';
-import 'package:art_app/views/home/controller/controller.dart';
-import 'package:art_app/views/home/services/services.dart';
+import 'package:art_app/utils/log/log.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
-import 'package:art_app/models/nft_home_calendar/row.dart' as rows;
+import 'package:art_app/models/nft_home_page_recommend_list/row.dart' as rows;
 
-class FirstCollectionComponent extends StatefulWidget {
-  final bool loading;
-  const FirstCollectionComponent({super.key, required this.loading});
+import '../services/services.dart';
+
+class LoadMoreListSource extends LoadingMoreBase<rows.Row> {
+  int pageindex = 1;
+  bool _hasMore = true;
+  bool forceRefresh = false;
 
   @override
-  State<FirstCollectionComponent> createState() =>
-      _FirstCollectionComponentState();
+  bool get hasMore => (_hasMore && length % 10 == 0) || forceRefresh;
+
+  @override
+  // ignore: avoid_renaming_method_parameters
+  Future<bool> refresh([bool clearBeforeRequest = false]) async {
+    _hasMore = true;
+    pageindex = 1;
+    //force to refresh list when you don't want clear list before request
+    //for the case, if your list already has 20 items.
+    forceRefresh = !clearBeforeRequest;
+    var result = await super.refresh(clearBeforeRequest);
+    forceRefresh = false;
+    return result;
+  }
+
+  @override
+  Future<bool> loadData([bool isloadMoreAction = false]) async {
+    try {
+      final _ = await HomeServices.nftHomePageRecommendList(pageindex);
+      if (pageindex == 1) {
+        clear();
+      }
+      LogUtil.e(_);
+      addAll(_.data?.rows ?? []);
+      _hasMore = (_.data?.rows ?? []).length < 10;
+      pageindex++;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
 
-class _FirstCollectionComponentState extends State<FirstCollectionComponent>
-    with AutomaticKeepAliveClientMixin {
-  final controller = Get.find<HomeController>();
-  final LoadMoreListSource souceList = LoadMoreListSource();
+class WinnowCollectionComponent extends StatefulWidget {
+  final bool loading;
+  const WinnowCollectionComponent({super.key, required this.loading});
 
   @override
-  void didUpdateWidget(FirstCollectionComponent oldWidget) {
+  State<WinnowCollectionComponent> createState() =>
+      _WinnowCollectionComponentState();
+}
+
+class _WinnowCollectionComponentState extends State<WinnowCollectionComponent>
+    with AutomaticKeepAliveClientMixin {
+  late final LoadMoreListSource source = LoadMoreListSource();
+
+  @override
+  void didUpdateWidget(WinnowCollectionComponent oldWidget) {
     if (widget.loading) {
-      souceList.refresh();
+      source.refresh();
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -62,7 +101,7 @@ class _FirstCollectionComponentState extends State<FirstCollectionComponent>
                       padding: const EdgeInsets.only(
                           top: 15, bottom: 10, left: 10, right: 10),
                       child: Text(
-                        '${_.nftProductName}',
+                        '${_.productName}',
                         style: context.textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -163,48 +202,9 @@ class _FirstCollectionComponentState extends State<FirstCollectionComponent>
                 ),
               ),
             ),
-        souceList: souceList);
+        souceList: source);
   }
 
   @override
   bool get wantKeepAlive => true;
-}
-
-class LoadMoreListSource extends LoadingMoreBase<rows.Row> {
-  int pageindex = 1;
-  bool _hasMore = true;
-  bool forceRefresh = false;
-
-  @override
-  bool get hasMore => (_hasMore && length % 10 == 0) || forceRefresh;
-
-  @override
-  // ignore: avoid_renaming_method_parameters
-  Future<bool> refresh([bool clearBeforeRequest = false]) async {
-    _hasMore = true;
-    pageindex = 1;
-    //force to refresh list when you don't want clear list before request
-    //for the case, if your list already has 20 items.
-    forceRefresh = !clearBeforeRequest;
-    var result = await super.refresh(clearBeforeRequest);
-    forceRefresh = false;
-    return result;
-  }
-
-  @override
-  Future<bool> loadData([bool isloadMoreAction = false]) async {
-    try {
-      final _ = await HomeServices.nftHomePageCalendar(pageindex);
-      if (pageindex == 1) {
-        clear();
-      }
-      // add(_.data?.rows);
-      addAll(_.data?.rows ?? []);
-      _hasMore = (_.data?.rows ?? []).length < 10;
-      pageindex++;
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
 }

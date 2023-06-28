@@ -3,6 +3,7 @@ import 'package:art_app/models/accountment_list/accountment_list.dart';
 import 'package:art_app/models/banner_list/banner_list.dart';
 import 'package:art_app/models/home_position_list/home_position_list.dart';
 import 'package:art_app/models/nft_home_calendar/nft_home_calendar.dart';
+import 'package:art_app/models/nft_home_page_recommend_list/nft_home_page_recommend_list.dart';
 import 'package:art_app/models/response/response.dart';
 
 abstract class ServicesUrl {
@@ -13,7 +14,7 @@ abstract class ServicesUrl {
       '/api/rotationChart/selectRotationChartList';
   static String get nftHomePageCalendar => '/api/nft/homePage/calendar';
   static String get nftHomePageRecommendList =>
-      'api/nft/homePage/recommendList';
+      '/api/nft/homePage/recommendList';
 }
 
 class HomeServices {
@@ -48,9 +49,9 @@ class HomeServices {
 
   /// 获取精选藏品
   /// * [page] 分页
-  static Future<ResponseModel<NftHomeCalendar>> nftHomePageRecommendList(
-          [int page = 1]) =>
-      HttpUtil.fetchModel<NftHomeCalendar>(FetchType.get,
-          url: ServicesUrl.nftHomePageRecommendList,
-          queryParameters: {'rows': 20, 'current': page});
+  static Future<ResponseModel<NftHomePageRecommendList>>
+      nftHomePageRecommendList([int page = 1]) =>
+          HttpUtil.fetchModel<NftHomePageRecommendList>(FetchType.get,
+              url: ServicesUrl.nftHomePageRecommendList,
+              queryParameters: {'rows': 20, 'current': page});
 }

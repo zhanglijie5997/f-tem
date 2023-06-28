@@ -4,8 +4,10 @@ import 'package:art_app/constants/assets.dart';
 import 'package:art_app/constants/constants.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/generated/locales.g.dart';
+import 'package:art_app/models/app_login_phone/app_login_phone.dart';
 import 'package:art_app/services/global/global.services.dart';
 import 'package:art_app/utils/log/log.utils.dart';
+import 'package:art_app/views/login/controller/controller.dart';
 import 'package:art_app/views/me/components/all.dart';
 import 'package:art_app/views/me/controller/controller.dart';
 import 'package:art_app/views/me/services/services.dart';
@@ -73,7 +75,8 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin {
                                     loginWidget: const Icon(
                                       IconFont.a_bianzu12,
                                       size: 21,
-                                    ).onTap(() {}),
+                                    ).onTap(
+                                        GlobalServiceController.to.loginOut),
                                   )
                                 : const CupertinoActivityIndicator(),
                           )
@@ -82,85 +85,102 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin {
                     ),
 
                     // 个人信息
-                    Container(
-                        width: context.mediaQuerySize.width,
-                        padding: EdgeInsets.fromLTRB(25, 25 + offset, 25, 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                // 头像
-                                ClipRRect(
-                                    borderRadius: 50.radius,
+                    Obx(
+                      () => Container(
+                          width: context.mediaQuerySize.width,
+                          padding: EdgeInsets.fromLTRB(25, 25 + offset, 25, 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  // 头像
+                                  ClipRRect(
+                                      borderRadius: 50.radius,
+                                      child: CustomLoginWidget(
+                                          loginWidget: CustomImage(
+                                              url: GlobalServiceController.to
+                                                      .userMsg.data?.avatar ??
+                                                  '',
+                                              size: Size(50, 50)),
+                                          notLoginWidget: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: Image.asset(Assets
+                                                .assetsImagesDefaultAvatar),
+                                          ))),
+                                  // 名称，id
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
                                     child: CustomLoginWidget(
-                                        loginWidget: CustomImage(
-                                            url: '', size: Size(50, 50)),
-                                        notLoginWidget: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: Image.asset(
-                                              Assets.assetsImagesDefaultAvatar),
-                                        ))),
-                                // 名称，id
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: CustomLoginWidget(
-                                    notLoginWidget: Text(
-                                        LocaleKeys.clickLogin.tr,
-                                        style: context.textTheme.labelLarge
-                                            ?.copyWith(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold)),
-                                    loginWidget: Column(
-                                      children: [
-                                        Text(
-                                          '昵称',
-                                          style: context.customTheme?.body18,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text('data',
-                                                style: context
-                                                    .textTheme.bodyMedium
-                                                    ?.copyWith(
-                                                        color: context
-                                                            .customTheme
-                                                            ?.subtitle)),
-                                          ],
-                                        ),
-                                      ],
+                                      notLoginWidget: Text(
+                                          LocaleKeys.clickLogin.tr,
+                                          style: context.textTheme.labelLarge
+                                              ?.copyWith(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold)),
+                                      loginWidget: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            GlobalServiceController
+                                                    .to.userMsg.data?.wxName ??
+                                                '',
+                                            style: context.customTheme?.body18,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                  controller.nftAddress(
+                                                      GlobalServiceController
+                                                              .to
+                                                              .userMsg
+                                                              .data
+                                                              ?.nftWalletAddress ??
+                                                          ''),
+                                                  style: context
+                                                      .textTheme.bodyMedium
+                                                      ?.copyWith(
+                                                          color: context
+                                                              .customTheme
+                                                              ?.subtitle)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-
-                            // 编辑个人资料
-                            CustomLoginWidget(
-                              notLoginWidget: const SizedBox(),
-                              loginWidget: Row(
-                                children: [
-                                  Text(LocaleKeys.userInformation,
-                                      style: context.textTheme.bodyMedium
-                                          ?.copyWith(
-                                              color: context
-                                                  .customTheme?.subtitle)),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: Icon(
-                                      IconFont.you,
-                                      size: 10,
-                                      color: context.customTheme?.subtitle,
-                                    ),
-                                  )
                                 ],
                               ),
-                            )
-                          ],
-                        )),
+
+                              // 编辑个人资料
+                              CustomLoginWidget(
+                                notLoginWidget: const SizedBox(),
+                                loginWidget: Row(
+                                  children: [
+                                    Text(LocaleKeys.userInformation.tr,
+                                        style: context.textTheme.bodyMedium
+                                            ?.copyWith(
+                                                color: context
+                                                    .customTheme?.subtitle)),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: Icon(
+                                        IconFont.you,
+                                        size: 10,
+                                        color: context.customTheme?.subtitle,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          )),
+                    ),
 
                     Container(
                       height: 46,
@@ -237,9 +257,10 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin {
           armedDragUpCancel: false,
           //pullBackCurve: TestCurve(),
           pullBackDuration: const Duration(milliseconds: 200),
-          onRefresh: () async {
+          onRefresh: () {
             controller.updateLoading(false);
-            return Future.delayed(3000.milliseconds, () {
+            return Future.delayed(1000.milliseconds, () async {
+              await GlobalServiceController.to.getUserInfo();
               controller.updateLoading(true);
               return true;
             });

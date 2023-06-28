@@ -12,6 +12,8 @@ class AnnouncementDetailView extends GetView<AnnouncementDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // backgroundColor: context.theme.scaffoldBackgroundColor.withAlpha(0),
+
         appBar: AppBar(
             toolbarHeight: 45, title: Text(LocaleKeys.announcementDetail.tr)),
         body: SingleChildScrollView(
@@ -40,7 +42,7 @@ class AnnouncementDetailView extends GetView<AnnouncementDetailController> {
                   child: Obx(
                     () => HtmlWidget(
                       '''
-                      <body style="color: white;">
+                      <body>
                       ${controller.data.data?.content}
                       </body>
                       ''',

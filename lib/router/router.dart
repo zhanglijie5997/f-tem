@@ -92,7 +92,7 @@ final class RoutePages {
             binding: ScanBinding()),
         GetPage(
             name: RoutesName.login,
-            page: () =>  LoginView(),
+            page: () => LoginView(),
             binding: LoginBinding()),
         GetPage(
             name: '${RoutesName.announcementDetail}/:id',

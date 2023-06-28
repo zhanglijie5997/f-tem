@@ -1,8 +1,13 @@
 // import 'package:art_app/utils/log/log.utils.dart';
 // import 'dart:convert';
 
+import 'dart:convert';
+
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/extension/map/map.ext.dart';
+import 'package:art_app/models/app_login_phone/app_login_phone.dart';
+import 'package:art_app/models/wx_user/wx_user.dart';
+import 'package:art_app/utils/log/log.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -28,7 +33,8 @@ class StorageUtils {
 
   static String get token => box.read<String>(StoreName.TOKEN) ?? '';
 
-  static Map get userMsg => box.read(StoreName.USERMSG) ?? {};
+  static WxUser get userMsg =>
+      WxUser.fromJson(jsonDecode(box.read(StoreName.USERMSG) ?? '{}'));
 
   static String get language => box.read<String>(StoreName.LANGUAGE) ?? 'zh,CN';
 
@@ -49,8 +55,9 @@ class StorageUtils {
     StorageUtils.box.remove(k);
   }
 
-  static changeUserMsg(v) {
-    StorageUtils.box.write(StoreName.USERMSG, v);
+  static changeUserMsg(WxUser v) {
+    LogUtil.w('changeUserMsg -> ${v.toJson()}');
+    StorageUtils.box.write(StoreName.USERMSG, jsonEncode(v.toJson()));
   }
 
   /// example zh,CN
