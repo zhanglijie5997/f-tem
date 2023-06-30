@@ -13,6 +13,8 @@ import 'package:screenshot_callback/screenshot_callback.dart';
 import 'dart:ui' as ui;
 import 'generated/locales.g.dart';
 
+RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 class App extends StatelessWidget {
   App({super.key});
   final GlobalKey globalkey = GlobalKey();
@@ -101,7 +103,11 @@ class App extends StatelessWidget {
           _screenShotListener(context);
           return _buildFontSize(context, child);
         }),
-        navigatorObservers: [GetXRouterObserver(), FlutterSmartDialog.observer],
+        navigatorObservers: [
+          GetXRouterObserver(),
+          routeObserver,
+          FlutterSmartDialog.observer
+        ],
         // home: Test1(),
         translationsKeys: AppTranslation.translations,
         initialBinding: BindingsBuilder(() {}),
