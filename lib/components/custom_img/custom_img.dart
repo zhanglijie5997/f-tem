@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 class CustomImage extends StatefulWidget {
   final String url;
   final Size? size;
-  const CustomImage({Key? key, required this.url, this.size}) : super(key: key);
+  final BoxFit? fit;
+  const CustomImage({Key? key, required this.url, this.size, this.fit})
+      : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -37,7 +39,7 @@ class _CustomImageState extends State<CustomImage>
     final size = widget.size;
     return ExtendedImage.network(
       url,
-      fit: BoxFit.fitWidth,
+      fit: widget.fit ?? BoxFit.fitWidth,
       width: size?.width ?? double.infinity,
       height: size?.height ?? double.infinity,
       cache: true,

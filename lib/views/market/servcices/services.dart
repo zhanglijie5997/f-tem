@@ -1,4 +1,5 @@
 import 'package:art_app/http/http.dart';
+import 'package:art_app/models/nft_market_get_consignment_product_list/nft_market_get_consignment_product_list.dart';
 import 'package:art_app/models/nft_market_get_plat_list/nft_market_get_plat_list.dart';
 import 'package:art_app/models/response/response.dart';
 
@@ -45,9 +46,11 @@ class MarketServices {
   }
 
   /// 板块内容
-  static Future<ResponseModel> nftMarketGetConsignmentProductList(
-      NftMarketGetConsignmentProductListParams v) {
-    return HttpUtil.fetchModel(FetchType.get,
+  static Future<ResponseModel<NftMarketGetConsignmentProductList>>
+      nftMarketGetConsignmentProductList(
+          NftMarketGetConsignmentProductListParams v) {
+    return HttpUtil.fetchModel<NftMarketGetConsignmentProductList>(
+        FetchType.get,
         url: MarketServicesUrl.nftMarketGetConsignmentProductList,
         queryParameters: v.toJson());
   }

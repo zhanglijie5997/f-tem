@@ -92,21 +92,26 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   Future<void> init() async {
     _loading.value = true;
     tabbarController.addListener(listener);
-    final _ = await HomeServices.announcementList();
-    LogUtil.w('获取home 数据 $_');
-    if (_.code == 200) {
-      _announcementList.value = _.data!;
-    }
-    var data = await HomeServices.homePositionSelectNftHomePositionList();
-    _loading.value = false;
-    final list = data.data?.data
-        ?.map((e) => e.copyWith(logoImg: logo[e.sortChart]))
-        .toList();
-    LogUtil.w(data);
-    _posList.value = data.data!.copyWith(data: list);
+    try {
+      final _ = await HomeServices.announcementList();
+      LogUtil.w('获取home 数据 $_');
+      if (_.code == 200) {
+        _announcementList.value = _.data!;
+      }
+      var data = await HomeServices.homePositionSelectNftHomePositionList();
+      _loading.value = false;
+      final list = data.data?.data
+          ?.map((e) => e.copyWith(logoImg: logo[e.sortChart]))
+          .toList();
+      LogUtil.w(data);
+      _posList.value = data.data!.copyWith(data: list);
 
-    var bannerData = await HomeServices.rotationChartSelectRotationChartList();
-    _banner.value = bannerData.data!;
+      var bannerData =
+          await HomeServices.rotationChartSelectRotationChartList();
+      _banner.value = bannerData.data!;
+    } catch (e) {
+      LogUtil.e(e);
+    }
   }
 
   @override

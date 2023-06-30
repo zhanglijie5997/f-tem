@@ -60,11 +60,22 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
         // widget = _setbackground(false, widget, 35.0);
         break;
       case IndicatorStatus.fullScreenBusying:
-        widget = const Row(
+        widget = Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            CupertinoActivityIndicator()
+            SizedBox(
+              height: 40,
+              child: Image.asset(Assets.assetsImagesNoEmptyV3),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 21.0),
+              child: Text(
+                '暂无数据',
+                style: context.textTheme.bodyMedium
+                    ?.copyWith(color: context.customTheme?.subtitle),
+              ),
+            ),
             // Container(
             //   margin: EdgeInsets.only(right: 0.0),
             //   height: 30.0,
@@ -82,6 +93,7 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
           );
         } else {
           widget = CustomScrollView(
+            physics: const ClampingScrollPhysics(),
             slivers: <Widget>[
               SliverFillRemaining(
                 child: widget,

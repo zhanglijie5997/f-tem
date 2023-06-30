@@ -12,22 +12,30 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 class CustomRefresh extends StatefulWidget {
+  final bool? befor;
+  final double? pinnedHeader;
   final Widget? child;
   final List<SliverToBoxAdapter>? slivers;
-  final ScrollController controller;
+  final ScrollController? controller;
   final Future<void> Function()? onRefresh;
+
+  /// 不需要extends_nested_scroll_view
+  final Widget? defaultChild;
   const CustomRefresh(
       {super.key,
+      this.pinnedHeader,
+      this.befor,
       this.child,
       this.slivers,
+      this.defaultChild,
       required this.controller,
       this.onRefresh});
 
   @override
-  State<CustomRefresh> createState() => _CustomRefreshState();
+  State<CustomRefresh> createState() => CustomRefreshState();
 }
 
-class _CustomRefreshState extends State<CustomRefresh> {
+class CustomRefreshState extends State<CustomRefresh> {
   final connectivityMap = {
     ConnectivityResult.none: const SizedBox(child: Text('无网络链接')),
     ConnectivityResult.wifi: const SizedBox(child: Text('wifi链接')),
@@ -65,31 +73,12 @@ class _CustomRefreshState extends State<CustomRefresh> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return PullToRefreshNotification(
-        notificationPredicate: (v) {
-          return true;
-        },
-        pullBackDuration: 300.milliseconds,
-        key: key,
-        color: Colors.blue,
-        onRefresh: () async {
-          await widget.onRefresh?.call();
-          return true;
-        },
-        pullBackOnRefresh: false,
-        maxDragOffset: double.infinity,
-        refreshOffset: 40,
-        reachToRefreshOffset: 40,
-        armedDragUpCancel: true,
-        child: ExtendedNestedScrollView(
-          controller: widget.controller,
-          onlyOneScrollInBody: true,
-          pinnedHeaderSliverHeightBuilder: () {
-            return 0;
-          },
-          headerSliverBuilder: (c, f) => [
+  List<Widget> refreshWidget() {
+    final List<Widget> _ = [
+      ...widget.slivers ?? [const SizedBox()]
+    ];
+    return widget.befor == null
+        ? [
             PullToRefreshContainer((info) {
               var offset = info?.dragOffset ?? 0.0;
               Widget child = Container(
@@ -104,10 +93,59 @@ class _CustomRefreshState extends State<CustomRefresh> {
                 child: child,
               );
             }),
-            ...widget.slivers ?? [const SizedBox()],
-          ],
-          body: widget.child ?? _result,
-        ));
+            ..._
+          ]
+        : [
+            ..._,
+            PullToRefreshContainer((info) {
+              var offset = info?.dragOffset ?? 0.0;
+              Widget child = Container(
+                alignment: Alignment.center,
+                height: offset,
+                // color: Colors.red,
+                width: double.infinity,
+                child: const CupertinoActivityIndicator(),
+              );
+
+              return SliverToBoxAdapter(
+                child: child,
+              );
+            })
+          ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PullToRefreshNotification(
+        notificationPredicate: (v) {
+          return true;
+        },
+        pullBackDuration: 300.milliseconds,
+        key: key,
+        color: Colors.blue,
+        onRefresh: () async {
+          try {
+            await widget.onRefresh?.call();
+          } catch (e) {
+            return false;
+          }
+          return true;
+        },
+        pullBackOnRefresh: false,
+        maxDragOffset: double.infinity,
+        refreshOffset: 40,
+        reachToRefreshOffset: 40,
+        armedDragUpCancel: true,
+        child: widget.defaultChild ??
+            ExtendedNestedScrollView(
+              controller: widget.controller,
+              onlyOneScrollInBody: true,
+              pinnedHeaderSliverHeightBuilder: () {
+                return widget.pinnedHeader ?? 0;
+              },
+              headerSliverBuilder: (c, f) => refreshWidget(),
+              body: widget.child ?? _result,
+            ));
 //     Container(child: _result).onTap(() async {
 //       // notifyHook.send();
 //

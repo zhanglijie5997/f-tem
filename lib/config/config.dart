@@ -82,7 +82,7 @@ final class Config {
 
   /// 获取基础配置
   static ServiceModel get base =>
-      baseMap['test'] ??
+      baseMap['prod'] ??
       ServiceModel(
           imSdkAppId: '1400804899',
           imSdkKey:
