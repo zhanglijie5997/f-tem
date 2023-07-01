@@ -78,9 +78,8 @@ class _MarketViewState extends State<MarketView>
         onRefresh: () async {
           // LogUtil.w(
           //     'pageindex --> ${controller.key[controller.active].currentState?.source.pageIndex}');
-          await Future.delayed(3000.milliseconds, () {
-            controller.key[controller.active].currentState?.source.refresh();
-          });
+          await controller.key[controller.active].currentState?.source
+              .refresh();
         },
         // controller: controller.scrollController,
         slivers: [

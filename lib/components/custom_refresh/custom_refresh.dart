@@ -18,6 +18,7 @@ class CustomRefresh extends StatefulWidget {
   final List<SliverToBoxAdapter>? slivers;
   final ScrollController? controller;
   final Future<void> Function()? onRefresh;
+  final List<Widget>? customHeader;
 
   /// 不需要extends_nested_scroll_view
   final Widget? defaultChild;
@@ -28,8 +29,9 @@ class CustomRefresh extends StatefulWidget {
       this.child,
       this.slivers,
       this.defaultChild,
-      required this.controller,
-      this.onRefresh});
+      this.controller,
+      this.onRefresh,
+      this.customHeader});
 
   @override
   State<CustomRefresh> createState() => CustomRefreshState();
@@ -77,41 +79,42 @@ class CustomRefreshState extends State<CustomRefresh> {
     final List<Widget> _ = [
       ...widget.slivers ?? [const SizedBox()]
     ];
-    return widget.befor == null
-        ? [
-            PullToRefreshContainer((info) {
-              var offset = info?.dragOffset ?? 0.0;
-              Widget child = Container(
-                alignment: Alignment.center,
-                height: offset,
-                // color: Colors.red,
-                width: double.infinity,
-                child: const CupertinoActivityIndicator(),
-              );
+    return widget.customHeader ??
+        (widget.befor == null
+            ? [
+                PullToRefreshContainer((info) {
+                  var offset = info?.dragOffset ?? 0.0;
+                  Widget child = Container(
+                    alignment: Alignment.center,
+                    height: offset,
+                    // color: Colors.red,
+                    width: double.infinity,
+                    child: const CupertinoActivityIndicator(),
+                  );
 
-              return SliverToBoxAdapter(
-                child: child,
-              );
-            }),
-            ..._
-          ]
-        : [
-            ..._,
-            PullToRefreshContainer((info) {
-              var offset = info?.dragOffset ?? 0.0;
-              Widget child = Container(
-                alignment: Alignment.center,
-                height: offset,
-                // color: Colors.red,
-                width: double.infinity,
-                child: const CupertinoActivityIndicator(),
-              );
+                  return SliverToBoxAdapter(
+                    child: child,
+                  );
+                }),
+                ..._
+              ]
+            : [
+                ..._,
+                PullToRefreshContainer((info) {
+                  var offset = info?.dragOffset ?? 0.0;
+                  Widget child = Container(
+                    alignment: Alignment.center,
+                    height: offset,
+                    // color: Colors.red,
+                    width: double.infinity,
+                    child: const CupertinoActivityIndicator(),
+                  );
 
-              return SliverToBoxAdapter(
-                child: child,
-              );
-            })
-          ];
+                  return SliverToBoxAdapter(
+                    child: child,
+                  );
+                })
+              ]);
   }
 
   @override

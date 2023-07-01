@@ -12,6 +12,8 @@ import 'package:art_app/views/login/login.dart';
 import 'package:art_app/views/market/binding/binding.dart';
 import 'package:art_app/views/me/binding/binding.dart';
 import 'package:art_app/views/message/binding/binding.dart';
+import 'package:art_app/views/nft_detail/binding/binding.dart';
+import 'package:art_app/views/nft_detail/nft_detail.dart';
 import 'package:art_app/views/order/purchase/purchase.dart';
 import 'package:art_app/views/order/purchase/binding/binding.dart';
 import 'package:art_app/views/order/resale/binding/binding.dart';
@@ -68,6 +70,9 @@ final class RoutesName {
 
   /// 寄售订单
   static String get regularOrder => '/regularOrder';
+
+  /// 藏品详情
+  static String get nftDetail => '/nftDetail';
 }
 
 final class RoutePages {
@@ -129,5 +134,9 @@ final class RoutePages {
             name: RoutesName.coupon,
             page: () => const CouponView(),
             binding: CouponBinding()),
+        GetPage(
+            name: '${RoutesName.nftDetail}/:id',
+            page: () => NftDetailView(),
+            binding: NftDetailBinding()),
       ];
 }

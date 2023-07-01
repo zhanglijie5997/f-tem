@@ -59,8 +59,10 @@ class ThemeService extends GetxService {
 class ThemeDataConfig {
   static ThemeData get light => ThemeData.light(useMaterial3: false).copyWith(
       extensions: [CustomTheme.light()],
-      appBarTheme:
-          AppBarTheme(backgroundColor: BaseTheme.defaultBgLight, elevation: 0),
+      appBarTheme: AppBarTheme(
+          toolbarHeight: 45,
+          backgroundColor: BaseTheme.defaultBgLight,
+          elevation: 0),
       splashFactory: NoSplashFactory(),
       scaffoldBackgroundColor: BaseTheme.defaultBgLight,
       textTheme: const TextTheme(
@@ -84,8 +86,10 @@ class ThemeDataConfig {
 
   static ThemeData get dark => ThemeData.dark(useMaterial3: false).copyWith(
       extensions: [CustomTheme.dark()],
-      appBarTheme:
-          AppBarTheme(backgroundColor: BaseTheme.defaultBgDark, elevation: 0),
+      appBarTheme: AppBarTheme(
+          toolbarHeight: 45,
+          backgroundColor: BaseTheme.defaultBgDark,
+          elevation: 0),
       scaffoldBackgroundColor: BaseTheme.defaultBgDark,
       splashFactory: NoSplashFactory(),
       textTheme: const TextTheme(

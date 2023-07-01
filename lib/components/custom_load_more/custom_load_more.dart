@@ -71,7 +71,7 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
             Padding(
               padding: const EdgeInsets.only(top: 21.0),
               child: Text(
-                '暂无数据',
+                '暂无数据2',
                 style: context.textTheme.bodyMedium
                     ?.copyWith(color: context.customTheme?.subtitle),
               ),
@@ -133,13 +133,13 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
             child: widget,
           );
         } else {
-          widget = CustomScrollView(
-            slivers: <Widget>[
-              SliverFillRemaining(
-                child: widget,
-              )
-            ],
-          );
+          // widget = CustomScrollView(
+          //   slivers: <Widget>[
+          //     SliverFillRemaining(
+          //       child: widget,
+          //     )
+          //   ],
+          // );
         }
         break;
       case IndicatorStatus.noMoreLoad:
@@ -160,7 +160,7 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
               Padding(
                 padding: const EdgeInsets.only(top: 21.0),
                 child: Text(
-                  '暂无数据',
+                  '暂无数据1',
                   style: context.textTheme.bodyMedium
                       ?.copyWith(color: context.customTheme?.subtitle),
                 ),
@@ -188,14 +188,15 @@ class _CustomLoadMoreState<T> extends State<CustomLoadMore<T>> {
             child: widget,
           );
         } else {
-          widget = CustomScrollView(
-            physics: const ClampingScrollPhysics(),
-            slivers: <Widget>[
-              SliverFillRemaining(
-                child: widget,
-              )
-            ],
-          );
+          // widget = CustomScrollView(
+          //   primary: true,
+          //   physics: const ClampingScrollPhysics(),
+          //   slivers: <Widget>[
+          //     SliverFillRemaining(
+          //       child: widget,
+          //     )
+          //   ],
+          // );
         }
         break;
     }

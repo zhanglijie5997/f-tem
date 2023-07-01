@@ -26,7 +26,7 @@ class MarketBoxComponentState extends State<MarketBoxComponent>
     with AutomaticKeepAliveClientMixin {
   final controller = Get.find<MarketController>();
   final scrollController = ScrollController();
-  late final source = MarketLoadMoreSource(data: widget.data, key: UniqueKey());
+  late final source = MarketLoadMoreSource(data: widget.data);
 
   // @override
   // void initState() {
@@ -149,7 +149,7 @@ class MarketLoadMoreSource extends LoadingMoreBase<row.Row> {
   int pageIndex = 1;
   bool _hasMore = true;
   bool forceRefresh = false;
-
+  // List<Datum>
   @override
   bool get hasMore => (_hasMore && length % 10 == 0) || forceRefresh;
 
@@ -179,7 +179,13 @@ class MarketLoadMoreSource extends LoadingMoreBase<row.Row> {
               latest: ''));
       if (pageIndex == 1) {
         // clear();
-        skip(_.data?.rows?.length ?? 0);
+        final Iterable<row.Row> e = [...(_.data?.rows ?? []), ...this];
+        if (length == 0) {
+          addAll(_.data?.rows ?? []);
+        } else {
+          // addAll(e);
+          sublist(0, (_.data?.rows ?? []).length);
+        }
       } else {
         addAll(_.data?.rows ?? []);
       }

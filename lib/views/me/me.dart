@@ -379,21 +379,6 @@ class _MeViewState extends State<MeView> with AutomaticKeepAliveClientMixin {
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
                 PullToRefreshContainer(buildPulltoRefreshImage),
-
-                // SliverPersistentHeader(
-                //     pinned: true,
-                //     floating: true,
-                //     delegate: CustomSliverPersistentHeader(
-                //         child: Container(
-                //       // color: Colors.red,
-                //       width: double.infinity,
-                //       // height: 40,
-                //       child: Image.asset(
-                //         Assets.assetsImagesMeBg,
-                //         fit: BoxFit.none,
-                //       ),
-                //       // height: 0,
-                //     ))),
               ];
             },
             // pinnedHeaderSliverHeightBuilder: 0,

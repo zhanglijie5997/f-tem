@@ -2,6 +2,7 @@ import 'package:art_app/components/custom_img/custom_img.dart';
 import 'package:art_app/components/custom_load_more/custom_load_more.dart';
 import 'package:art_app/extension/extension.dart';
 import 'package:art_app/generated/locales.g.dart';
+import 'package:art_app/router/router.dart';
 import 'package:art_app/utils/log/log.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -90,9 +91,12 @@ class _WinnowCollectionComponentState extends State<WinnowCollectionComponent>
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(5),
                           topRight: Radius.circular(5)),
-                      child: CustomImage(
-                        url: _.productCover ?? '',
-                        size: const Size(double.infinity, 350),
+                      child: Hero(
+                        tag: _.id ?? '',
+                        child: CustomImage(
+                          url: _.productCover ?? '',
+                          size: const Size(double.infinity, 350),
+                        ),
                       ),
                     ),
 
@@ -201,7 +205,13 @@ class _WinnowCollectionComponentState extends State<WinnowCollectionComponent>
                   ],
                 ),
               ),
-            ),
+            ).onTap(() {
+              Get.toNamed('${RoutesName.nftDetail}/${_.nftProductId}',
+                  parameters: {
+                    'id': _.id ?? '',
+                    'image': _.productImage ?? ''
+                  });
+            }),
         souceList: source);
   }
 

@@ -76,6 +76,7 @@ dependencies:
   flutter_screenutil: ^5.8.4
   flutter_ali_auth: ^0.6.2
   loading_more_list: ^5.0.3
+  flutter_cache_manager: ^3.3.0
   # qq_badge: 
   #   path: ./plugin/QqBadge
   # flutter_openim_unimp:
